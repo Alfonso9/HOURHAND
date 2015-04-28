@@ -1,0 +1,34 @@
+.titulo
+{
+	color: white;
+}
+
+header nav div div a:hover
+{
+	cursor: pointer;
+}
+
+.modal-dialog{
+    width: 400px;
+}
+
+.modal-content{
+    border-radius:0px;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.modal-header{
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.form-control{
+    border-radius: 0px;
+}
+
+.container-fluid
+{
+    margin-top: 5%;
+}
