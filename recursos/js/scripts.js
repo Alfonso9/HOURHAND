@@ -57,19 +57,36 @@ function getCarrera(id)
             });
 }
 
-// Prevent form submission
-$( "form" ).submit(function( event ) {
-  event.preventDefault();
-});
-
-
-function editCarrera(id)
+function editCarrera(codigo)
 {
     $.ajax
             ({
                 type: "POST",
                 url: "crud/editarCarrera",
-                data: {'id':id},
+                data: {'codigo':codigo},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-carreras").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function formCrearCarrera()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/formcrearcarrera",
                 success: function(jso)
                         {
                             try
@@ -98,7 +115,8 @@ function delCarrera(id)
                         {
                             try
                             {     
-                                $("#div-carreras").html(jso);                                
+                                $("#div-carreras").html(jso);
+                                window.formCrearCarrera();                                
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -110,3 +128,4 @@ function delCarrera(id)
                         }
             });
 }
+
