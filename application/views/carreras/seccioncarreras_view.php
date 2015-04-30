@@ -9,4 +9,5 @@
 		</div>
 	</article>
 <?php endforeach; ?>
+<?php echo validation_errors(); ?>
 
