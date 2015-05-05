@@ -220,7 +220,7 @@ class Crud extends CI_Controller {
 
 	function editarMaestro()
 	{
-		$codigo = $this->input->post('numero');
+		$numero = $this->input->post('numero');
 		$this->data['maestro'] = $this->crud_model->getMaestro($numero);
 		$this->load->view('maestros/seccionformedit_view', $this->data);
 	}
