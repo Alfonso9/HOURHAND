@@ -129,3 +129,123 @@ function delCarrera(id)
             });
 }
 
+/////////////////////////AULAS///////////////////////////////
+function Aulas()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaAulas",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest.. HOLLLL');
+                        }
+            });
+}
+
+function getAula(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/getAula",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-infoAula").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function editAula(codigo)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/editarAula",
+                data: {'codigo':codigo},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-aulas").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function formCrearAula()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/formcrearaula",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-aulas").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function delAula(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/eliminarAula",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-aulas").html(jso);
+                                window.formCrearAula();                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}

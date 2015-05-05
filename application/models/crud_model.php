@@ -66,4 +66,61 @@ class Crud_model extends CI_Model
 		$query = $this->db->get('carrera');
 		return $query->result();
 	}
+
+
+
+
+
+	/////////////////////////////////AULAS/////////////////////////
+	public function createAula($data)
+	{
+		$this->db->insert('aula', $data);
+	}
+
+	/**
+	 * updateAula
+	 *
+	 * @author Alfonso
+	*/
+	public function updateAula($id, $data)
+	{
+		$this->db->where('numeroAula', $id);
+		$this->db->update('aula', $data);
+	}
+
+	/**
+	 * delAula
+	 *
+	 * @author Alfonso
+	*/
+	public function delAula($id)
+	{
+		$this->db->where('numeroAula', $id); 
+		$this->db->delete('aula');
+	}
+
+	/**
+	 * getAula
+	 *
+	 * @author Alfonso
+	*/
+	public function getAula($id)
+	{
+		$this->db->select('numeroAula, capacidAula');
+		$this->db->where('numeroAula', $id); 
+		$query = $this->db->get('aula');
+		return $query->row();
+	}
+
+	/**
+	 * getNombreAula
+	 *
+	 * @author Alfonso
+	*/
+	public function getNombreAula()
+	{
+		$this->db->select('numeroAula');
+		$query = $this->db->get('aula');
+		return $query->result();
+	}
 }

@@ -33,13 +33,13 @@
                     </a>
                 </li>
                 <li>
-                    <a onclick="verMiHistorico()">
+                    <a onclick="Maestros()">
                       <i class="glyphicon glyphicon-file "></i>
                       <span>MAESTROS</span>
                     </a>
                 </li>
                 <li>
-                    <a onclick="verMiHistorico()">
+                    <a onclick="Aulas()">
                       <i class="glyphicon glyphicon-file "></i>
                       <span>AULAS</span>
                     </a>
