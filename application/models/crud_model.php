@@ -68,10 +68,6 @@ class Crud_model extends CI_Model
 	}
 
 
-
-
-
-	/////////////////////////////////AULAS/////////////////////////
 	public function createAula($data)
 	{
 		$this->db->insert('aula', $data);
@@ -123,4 +119,58 @@ class Crud_model extends CI_Model
 		$query = $this->db->get('aula');
 		return $query->result();
 	}
+
+
+	public function createMaestro($data)
+	{
+		$this->db->insert('maestro', $data);
+	}
+
+	/**
+	 * updateMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function updateMaestro($id, $data)
+	{
+		$this->db->where('numMtro', $id);
+		$this->db->update('maestro', $data);
+	}
+
+	/**
+	 * delMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function delMaestro($id)
+	{
+		$this->db->where('numMtro', $id); 
+		$this->db->delete('maestro');
+	}
+
+	/**
+	 * getMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function getMaestro($id)
+	{
+		$this->db->select('numMtro, nombMtro, tipoMtro, horasMtro');
+		$this->db->where('numMtro', $id); 
+		$query = $this->db->get('maestro');
+		return $query->row();
+	}
+
+	/**
+	 * getNombreCarrera
+	 *
+	 * @author Alfonso
+	*/
+	public function getNombreMaestro()
+	{
+		$this->db->select('numMtro, nombMtro');
+		$query = $this->db->get('maestro');
+		return $query->result();
+	}
+
 }

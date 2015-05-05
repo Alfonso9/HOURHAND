@@ -85,10 +85,6 @@ class Crud extends CI_Controller {
 		$this->load->view('carreras/seccionformcrear_view');
 	}
 
-
-
-
-	/////////////////////////////////AULAS//////////////////////////////777
 	function paginaAulas()
 	{
 		$this->data['query'] = $this->crud_model->getNombreAula();
@@ -162,5 +158,90 @@ class Crud extends CI_Controller {
 		$this->load->view('aulas/seccionformcrear_view');
 	}
 
+	function paginaMaestros()
+	{
+		$this->data['query'] = $this->crud_model->getNombreMaestro();
+		$this->load->view('maestros/maestros_view', $this->data);
+	}
+
+	function crearMaestro()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('numero', 'número', 'required');
+		$this->form_validation->set_rules('nombre', 'nombre', 'required');
+		$this->form_validation->set_rules('tipo', 'tipo', 'required');
+		$this->form_validation->set_rules('horas', 'horas', 'required');
+		$data = array(	'numMtro' => $this->input->post('numero'),
+						'nombMtro' => $this->input->post('nombre'),
+						'tipoMtro' => $this->input->post('tipo'),
+						'horasMtro' => $this->input->post('horas') );
+
+		if($this->form_validation->run() == true){
+			$this->crud_model->createMaestro($data);
+	        $this->data['query'] = $this->crud_model->getNombreMaestro();
+			$this->load->view('maestros/seccionmaestros_view', $this->data);
+    	}elseif ($this->form_validation->run() == false) {
+    		$this->data['query'] = $this->crud_model->getNombreMaestro();
+			$this->load->view('maestros/seccionmaestros_view', $this->data);	
+    	}	
+	}
+
+	function actualizarMaestro()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('numero', 'número', 'required');
+		$this->form_validation->set_rules('nombre', 'nombre', 'required');
+		$this->form_validation->set_rules('tipo', 'tipo', 'required');
+		$this->form_validation->set_rules('horas', 'horas', 'required');
+		$data = array(
+						'nombMtro' => $this->input->post('nombre'),
+						'tipoMtro' => $this->input->post('tipo'),
+						'horasMtro' => $this->input->post('horas') );
+		$id = $this->input->post('numero');
+
+		if($this->form_validation->run() == true){
+			$this->crud_model->updateMaestro($id, $data);
+	        $this->data['query'] = $this->crud_model->getNombreMaestro();
+			$this->load->view('maestros/seccionmaestros_view', $this->data);
+    	}elseif ($this->form_validation->run() == false) {
+    		$this->data['query'] = $this->crud_model->getNombreMaestro();
+			$this->load->view('maestros/seccionmaestros_view', $this->data);	
+    	}
+	}
+
+	function getMaestro()
+	{
+		$id = $this->input->post('id');
+		$this->data['maestro'] = $this->crud_model->getMaestro($id);
+		$this->load->view('maestros/seccioninfo_view', $this->data);
+	}
+
+	function editarMaestro()
+	{
+		$codigo = $this->input->post('numero');
+		$this->data['maestro'] = $this->crud_model->getMaestro($numero);
+		$this->load->view('maestros/seccionformedit_view', $this->data);
+	}
+	
+	function eliminarMaestro()
+	{
+		$id = $this->input->post('id');
+		$this->crud_model->delMaestro($id);
+		$this->data['query'] = $this->crud_model->getNombreMaestro();
+		$this->load->view('maestros/seccionmaestros_view', $this->data);
+	}
+
+	function formcrearmaestro()
+	{
+		$this->load->view('maestros/seccionformcrear_view');
+	}
+
+
+
 
 }
+
+
+	

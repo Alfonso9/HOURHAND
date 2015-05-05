@@ -1,11 +1,11 @@
-<?php foreach($query as $carrera): ?>
+<?php foreach($query as $maestro): ?>
 	<article>
-		<a onclick="getCarrera(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
-			<?php echo $carrera->nombreCarr; ?>
+		<a onclick="getMaestro(<?php echo htmlspecialchars(json_encode($maestro->numMtro)); ?>)">
+			<?php echo $maestro->nombMtro; ?>
 		</a>
 		<div>
-			<a onclick="editCarrera(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)" class="glyphicon glyphicon-pencil"></a>
-			<a onclick="delCarrera(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)" class="glyphicon glyphicon-remove"></a>
+			<a onclick="editMaestro(<?php echo htmlspecialchars(json_encode($maestro->numMtro)); ?>)" class="glyphicon glyphicon-pencil"></a>
+			<a onclick="delMaestro(<?php echo htmlspecialchars(json_encode($maestro->numMtro)); ?>)" class="glyphicon glyphicon-remove"></a>
 		</div>
 	</article>
 <?php endforeach; ?>

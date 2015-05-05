@@ -249,3 +249,127 @@ function delAula(id)
                         }
             });
 }
+
+
+
+/////////////////////////MAESTROS///////////////////////////////
+
+function Maestros()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaMaestros",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function getMaestro(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/getMaestro",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-infoMaestro").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function editMaestro(codigo)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/editarMaestro",
+                data: {'numero':numero},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-maestros").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function formCrearMaestro()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/formcrearmaestro",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-maestros").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function delMaestro(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/eliminarMaestro",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-maestros").html(jso);
+                                window.formCrearMaestro();                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
