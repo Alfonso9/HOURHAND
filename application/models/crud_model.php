@@ -61,4 +61,40 @@ class Crud_model extends CI_Model
 		$query = $this->db->get('carrera');
 		return $query->result();
 	}
+        //funciones Experiencias Educativas
+        public function getEE($id)
+	{
+		$this->db->select('nrcEE, nombEE, periodEE, areaEE, tipoEE, hrsteoriaEE, hrspractEE, creditEE');
+		$this->db->where('nrcEE', $id); 
+		$query = $this->db->get('ee');
+		return $query->row();
+	}
+        public function getCarreraEE($id)
+	{
+		$this->db->select('codigoCarr, nombreCarr, creditosCarr');
+		$this->db->where('codigoCarr', $id); 
+		$query = $this->db->get('carrera');
+		return $query->row();
+	}
+        
+        public function getNombreEE()
+	{
+		$this->db->select('nrcEE, nombEE');
+		$query = $this->db->get('ee');
+		return $query->result();
+	}
+        public function delEE($id)
+	{
+		$this->db->where('nrcEE', $id); 
+		$this->db->delete('ee');
+	}
+       public function comboCarrera()
+	{
+		$this->db->order_by('codigoCarr, nombreCarr','asc');
+		$query2 = $this->db->get('carrera');
+		if($query2->num_rows()>0)
+		{
+			return $query2->result();
+		}
+	}
 }
