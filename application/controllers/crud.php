@@ -23,12 +23,40 @@ class Crud extends CI_Controller {
 		$this->form_validation->set_rules('codigo', 'código', 'required');
 		$this->form_validation->set_rules('nombre', 'nombre', 'required');
 		$this->form_validation->set_rules('creditos', 'créditos', 'required');
+		$data = array(	'codigoCarr' => $this->input->post('codigo'),
+						'nombreCarr' => $this->input->post('nombre'),
+						'creditosCarr' => $this->input->post('creditos') );
 
-		if ($this->form_validation->run() == FALSE)
-		{
-			$this->data['query'] = $this->crud_model->getNombreCarr();
-			$this->load->view('carreras/carreras_view', $this->data);
-		}
+		if($this->form_validation->run() == true){
+			$this->crud_model->createCarrera($data);
+	        $this->data['query'] = $this->crud_model->getNombreCarr();
+			$this->load->view('carreras/seccioncarreras_view', $this->data);
+    	}elseif ($this->form_validation->run() == false) {
+    		$this->data['query'] = $this->crud_model->getNombreCarr();
+			$this->load->view('carreras/seccioncarreras_view', $this->data);	
+    	}	
+	}
+
+	function actualizarCarrera()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('codigo', 'código', 'required');
+		$this->form_validation->set_rules('nombre', 'nombre', 'required');
+		$this->form_validation->set_rules('creditos', 'créditos', 'required');
+		$data = array(
+						'nombreCarr' => $this->input->post('nombre'),
+						'creditosCarr' => $this->input->post('creditos') );
+		$id = $this->input->post('codigo');
+
+		if($this->form_validation->run() == true){
+			$this->crud_model->updateCarrera($id, $data);
+	        $this->data['query'] = $this->crud_model->getNombreCarr();
+			$this->load->view('carreras/seccioncarreras_view', $this->data);
+    	}elseif ($this->form_validation->run() == false) {
+    		$this->data['query'] = $this->crud_model->getNombreCarr();
+			$this->load->view('carreras/seccioncarreras_view', $this->data);	
+    	}
 	}
 
 	function getCarrera()
@@ -40,11 +68,11 @@ class Crud extends CI_Controller {
 
 	function editarCarrera()
 	{
-		$id = $this->input->post('id');
-		$this->data['carrera'] = $this->crud_model->getCarrera($id);
-		$this->load->view('carreras/seccionform_view', $this->data);
+		$codigo = $this->input->post('codigo');
+		$this->data['carrera'] = $this->crud_model->getCarrera($codigo);
+		$this->load->view('carreras/seccionformedit_view', $this->data);
 	}
-
+	
 	function eliminarCarrera()
 	{
 		$id = $this->input->post('id');
@@ -72,6 +100,7 @@ class Crud extends CI_Controller {
 		$this->load->view('EE/seccionCarrera_EE_view', $this->data);
 	}
 
+<<<<<<< HEAD
         function editarEE()
 	{
 		$id = $this->input->post('id');
@@ -87,4 +116,11 @@ class Crud extends CI_Controller {
 		$this->load->view('EE/seccionEE_view', $this->data);
 	}
         
+=======
+	function formcrearcarrera()
+	{
+		$this->load->view('carreras/seccionformcrear_view');
+	}
+
+>>>>>>> bf619624d892f01a386415cff320cb5ed62c9ae1
 }

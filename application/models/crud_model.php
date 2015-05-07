@@ -18,12 +18,17 @@ class Crud_model extends CI_Model
 	public function createCarrera($data)
 	{
 		$this->db->insert('carrera', $data);
-		$group_id = $this->db->insert_id();
+	}
 
-		// report success
-		$this->set_message('group_creation_successful');
-		// return the brand new group id
-		return $group_id;
+	/**
+	 * updateCarrera
+	 *
+	 * @author Alfonso
+	*/
+	public function updateCarrera($id, $data)
+	{
+		$this->db->where('codigoCarr', $id);
+		$this->db->update('carrera', $data);
 	}
 
 	/**
