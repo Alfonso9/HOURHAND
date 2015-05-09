@@ -2,9 +2,10 @@
 	<div class="col-md-8">
 		<h2>CARRERAS</h2>
 		<br><br><br>
-	<?php echo validation_errors(); ?>
+		<script src="<?= base_url(); ?>recursos/js/jquery-1.10.2.js"></script>
 		<div class="col-md-6" id="div-form-carreras">
-			<form id="target" action="#">
+			<form id="formCarrera" action="crud/crearCarrera">
+				<span></span>
 				<div class="form-group" >
 					<label for="">Código</label><br>
 					<input type="text" id="codigo" name="codigo" placeholder="Código">
@@ -19,7 +20,39 @@
 				</div>
 				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
 			</form>
-		</div><span></span>
+			<script>
+				$( "#formCarrera" ).submit(function( event ) {
+				  
+				  var codigo = $("#codigo").val();
+				  var nombre = $("#nombre").val();
+				  var creditos = $("#creditos").val();
+
+				  //alert($(this).attr("action"));
+				  event.preventDefault();
+				  $.ajax
+			            ({
+			                type: "POST",
+			                url: $(this).attr("action"),
+			                data: {'codigo':codigo, 'nombre':nombre, 'creditos':creditos},
+			                success: function(jso)
+			                        {
+			                            try
+			                            {                                          	                           
+			                                $("#div-carreras").html(jso);
+			                                window.formCrearCarrera();                           
+			                            }catch(e)
+			                            {
+			                                alert('Exception while resquest...');
+			                            }                       
+			                        },
+			                error:  function()
+			                        {
+			                            alert('Error while resquest..');
+			                        }
+			            });
+				});
+			</script>
+		</div>
 		<div class="col-md-6" id="div-carreras">
 			<?php foreach($query as $carrera): ?>
 				<article>
@@ -34,7 +67,7 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
-	<div class="col-md-4" id="div-infoCarrera">
-		
-	</div>
+	<div class="col-md-4" id="div-infoCarrera"></div>
 </div>
+
+

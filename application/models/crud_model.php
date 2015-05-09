@@ -18,12 +18,17 @@ class Crud_model extends CI_Model
 	public function createCarrera($data)
 	{
 		$this->db->insert('carrera', $data);
-		$group_id = $this->db->insert_id();
+	}
 
-		// report success
-		$this->set_message('group_creation_successful');
-		// return the brand new group id
-		return $group_id;
+	/**
+	 * updateCarrera
+	 *
+	 * @author Alfonso
+	*/
+	public function updateCarrera($id, $data)
+	{
+		$this->db->where('codigoCarr', $id);
+		$this->db->update('carrera', $data);
 	}
 
 	/**
@@ -64,7 +69,11 @@ class Crud_model extends CI_Model
         //funciones Experiencias Educativas
         public function getEE($id)
 	{
+<<<<<<< HEAD
 		$this->db->select('nrcEE, codigoCarr, nombEE, periodEE, areaEE, tipoEE, hrsteoriaEE, hrspractEE, creditEE');
+=======
+		$this->db->select('nrcEE, nombEE, periodEE, areaEE, tipoEE, hrsteoriaEE, hrspractEE, creditEE');
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
 		$this->db->where('nrcEE', $id); 
 		$query = $this->db->get('ee');
 		return $query->row();
@@ -83,6 +92,7 @@ class Crud_model extends CI_Model
 		$query = $this->db->get('ee');
 		return $query->result();
 	}
+<<<<<<< HEAD
         public function getNombreCarrEE($id)
 	{
 		$this->db->select('nrcEE, nombEE');
@@ -90,6 +100,8 @@ class Crud_model extends CI_Model
 		$query = $this->db->get('ee');
 		return $query->result();
         }
+=======
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
         public function delEE($id)
 	{
 		$this->db->where('nrcEE', $id); 
@@ -104,5 +116,8 @@ class Crud_model extends CI_Model
 			return $query2->result();
 		}
 	}
+<<<<<<< HEAD
         
+=======
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
 }
