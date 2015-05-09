@@ -1,6 +1,10 @@
 <form id="formCarrera" method="post">
     <div class="form-group" >
         <label for="">Carrera</label><br>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
         <select id="carreraEE" name="carreraEE" placeholder="Carrera">
         <option value="0">Selecciona una opción</option>
         <?php foreach ($query2 as $carrera): 
@@ -16,6 +20,12 @@
         <?php  } ?>
           <?php endforeach; ?>
         </select>
+<<<<<<< HEAD
+=======
+=======
+        <select id="carreraEE" name="carreraEE" placeholder="Carrera"></select>
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
     </div>
     <div class="form-group" >
         <label for="">NRC</label><br>
@@ -29,6 +39,10 @@
         <label for="">Periodo</label><br>
         <select id="periodoEE" name="periodoEE" placeholder="Periodo">
             <option value="0">Seleccione una opción..</option>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
             <?php foreach ($arreglo3 as $periodos ):
             if (($ee->periodEE) == ($periodos)){  
             ?>
@@ -38,6 +52,13 @@
             <option ><?php echo $periodos;?></option>
             <?php } ?>
             <?php endforeach; ?>
+<<<<<<< HEAD
+=======
+=======
+            <option value="1">FEB-JUL</option>
+            <option value="2">AGO-ENE</option>
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
 
         </select>
     </div>
@@ -45,6 +66,10 @@
         <label for="">Área</label><br>
         <select id="areaEE" name="areaEE" placeholder="Área">
             <option value="0">Seleccione una opción...</option>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
             <?php foreach ($arreglo as $areas ):
             if (($ee->areaEE) == ($areas)){  
             ?>
@@ -56,10 +81,29 @@
             <?php endforeach; ?>
         </select>
     </div>
+<<<<<<< HEAD
+=======
+=======
+            <option value="1">Básica General</option>
+            <option value="2">Iniciación  a la Diciplina</option>
+            <option value="3">Diciplinaria</option>
+            <option value="4">Terminal</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">Créditos</label><br>
+        <input type="text" id="creditos" name="creditos" placeholder="Créditos" value="<?php echo $ee->creditEE; ?>">
+    </div>
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
     <div class="form-group" >
         <label for="">Tipo</label><br>
         <select id="tipoEE" name="tipoEE" placeholder="Tipo">
             <option value="0">Selecione una opción...</option>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
             <?php foreach ($arreglo2 as $tipos ):
             if (($ee->tipoEE) == ($tipos)){  
             ?>
@@ -69,6 +113,13 @@
             <option ><?php echo $tipos;?></option>
             <?php } ?>
             <?php endforeach; ?>
+<<<<<<< HEAD
+=======
+=======
+            <option value="1">Obligatoria</option>
+            <option value="2">Optativa</option>
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
         </select>
     </div>
     <div class="form-group" >
@@ -79,9 +130,18 @@
         <label for="">Horas Prácticas</label><br>
         <input type="text" id="hrsP" name="hrsP" placeholder="Numero de horas" value="<?php echo $ee->hrspractEE; ?>">
     </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
     <div class="form-group">
         <label for="">Créditos</label><br>
         <input type="text" id="creditos" name="creditos" placeholder="Créditos" value="<?php echo $ee->creditEE; ?>">
     </div>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
+>>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
     <button type="submit" id="submit" class="btn btn-default">Listo</button>
 </form>
