@@ -3,7 +3,7 @@
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" id="menu-toggle">
-                <strog class="titulo">HOURHAND</strong>
+                <strong class="titulo">HOURHAND</strong>
             </a>      
           </div>
         </div>
@@ -61,4 +61,3 @@
         <!-- Sidebar Wrapper-->
         <!--Termina Toggle Perfil -->
 </header>
-<body>

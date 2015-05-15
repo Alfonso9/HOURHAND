@@ -4,11 +4,11 @@
 		<br><br><br>
 		<?php echo validation_errors(); ?>
 		<div class="col-md-3" id="div-form-ee">
-			<form id="formEE" action="crud/crearEE">
+			<form id="formCrearEE" action="crud/crearEE">
                 <div class="form-group" >
 					<label for="">Carrera</label><br>
-                    <select id="carreraEE" name="carreraEE" placeholder="Carrera">
-                        <option value="0">Seleccione una opción...</option>
+                    <select id="carreraEE" name="carreraEE">
+                        <option>Seleccione una opción...</option>
                         <?php foreach ($query2 as $carrera): ?>
 	                        <option id='<?php echo $carrera->codigoCarr; ?>'  
 	                        		onclick="selec(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
@@ -18,29 +18,31 @@
                     </select>
 				</div>
 				<div class="form-group" >
-					<label for="">Nrc</label><br>
-					<input type="text" id="codigo" name="NRC" placeholder="NRC">
+					<label for="">NRC</label><br>
+					<input type="text" id="nrc"	
+					pattern="[0-9]{5}" placeholder="Ejemplo: 12345" title="Deben ser 5 caracteres">
 				</div>
 				<div class="form-group">
 					<label for="">Nombre</label><br>
-					<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+					<input type="text" id="nombre" 
+					pattern="[A-ZÑÁÉÍÓÚ]{1}[a-zñáéíóú\s]+" placeholder="Ejemplo: Logica" title="Primera letra mayúscula. Máximo 50 caracteres">
 				</div>
                 <div class="form-group" >
 					<label for="">Periodo</label><br>
                     <select id="periodoEE" name="periodoEE" placeholder="Periodo">
-                        <option value="0">Seleccione una opción..</option>
-                        <option value="1">FEB-JUL</option>
-                        <option value="2">AGO-ENE</option>                                            
+                        <option>Seleccione una opción..</option>
+                        <option id="FEB-JUL" onclick="selec(FEB-JUL)">FEB-JUL</option>
+                        <option id="AGO-ENE" onclick="selec(AGO-ENE)">AGO-ENE</option>                                            
                     </select>
 				</div>
                 <div class="form-group" >
 					<label for="">Área</label><br>
-                    <select id="areaEE" name="areaEE" placeholder="Área">
-                        <option value="0">Seleccione una opción...</option>
-                        <option value="1">Básica General</option>
-                        <option value="2">Iniciación  a la Diciplina</option>
-                        <option value="3">Diciplinaria</option>
-                        <option value="4">Terminal</option>
+                    <select id="areaEE" name="areaEE">
+                        <option>Seleccione una opción...</option>
+                        <option id="area1"  onclick="selec(area1)">Básica General</option>
+                        <option id="area2"  onclick="selec(area2)">Iniciación  a la Diciplina</option>
+                        <option id="area3"  onclick="selec(area3)">Diciplinaria</option>
+                        <option id="area4"  onclick="selec(area4)">Terminal</option>
                     </select>
 				</div>
 				<div class="form-group">
@@ -49,10 +51,10 @@
 				</div>
                 <div class="form-group" >
 					<label for="">Tipo</label><br>
-                    <select id="tipoEE" name="tipoEE" placeholder="Tipo">
-                        <option value="0">Selecione una opción...</option>
-                        <option value="1">Obligatoria</option>
-                        <option value="2">Optativa</option>
+                    <select id="tipoEE" placeholder="Tipo">
+                        <option >Selecione una opción...</option>
+                        <option id="tipo1" onclick="selec(tipo1)">Obligatoria</option>
+                        <option id="tipo2" onclick="selec(tipo2)">Optativa</option>
                     </select>
                 </div>
                 <div class="form-group" >
@@ -68,30 +70,74 @@
 			<script>
 				function selec(codigo)
 				{
-				    alert(codigo);
-				    var sel = document.getElementsByTagName(codigo);
+				    var sel = document.getElementById(codigo);
 				    sel.setAttribute("selected", "selected");
 				}
 
-				$( "#formEE" ).submit(function( event ) 
+				$("#formCrearEE").submit(function( event ) 
 				{
-				  var codigo = $("#codigo").val();
-				  var nombre = $("#nombre").val();
-				  var creditos = $("#creditos").val();
+					event.preventDefault();
+					var carrera = document.getElementById("carreraEE");
+					var idCarrera = carrera.options[carrera.selectedIndex].id;
+					var nrc = $("#nrc").val();
+					var nombre = $("#nombre").val();
+					var periodo = document.getElementById("periodoEE");
+					var idPeriodo = periodo.options[periodo.selectedIndex].id;
+					var area = document.getElementById("areaEE");
+					var idArea = area.options[area.selectedIndex].id;
+					switch(idArea) 
+					{
+						case "area1":
+						    area = "Básica General";
+						    break;
+						case "area2":
+						    area = "Iniciación  a la Diciplina";
+						    break;
+						case "area3":
+						    area = "Diciplinaria";
+						    break;
+						case "area4":
+						    area = "Terminal";
+						    break;
+						default:
+						    break;
+					}
+					var creditos = $("#creditos").val();
+					var tipo = document.getElementById("tipoEE");
+					var idTipo = tipo.options[tipo.selectedIndex].id;
+					switch(idTipo) 
+					{
+						case "tipo1":
+						    tipo = "Obligatoria";
+						    break;
+						case "tipo2":
+						    tipo = "Optativa";
+						    break;
+						default:
+						    break;
+					}
+					var hrsT = $("#hrsT").val();
+					var hrsP = $("#hrsP").val();
 
-				  //alert($(this).attr("action"));
-				  event.preventDefault();
-				  $.ajax
+				 	$.ajax
 			            ({
 			                type: "POST",
 			                url: $(this).attr("action"),
-			                data: {'codigo':codigo, 'nombre':nombre, 'creditos':creditos},
+			                data: {	'carrera': idCarrera,
+			            			'nrc':nrc,
+			            			'nombre':nombre,
+			            			'periodo':idPeriodo,
+			            			'area':area,
+			            			'creditos':creditos,
+			            			'tipo':tipo,
+			            			'hrsT':hrsT,
+			            			'hrsP':hrsP},
 			                success: function(jso)
 			                        {
 			                            try
 			                            {                                          	                           
-			                                $("#div-carreras").html(jso);
-			                                window.formCrearCarrera();                           
+			                                alert(jso); 
+			                                $("#div-ee").html(jso);                       
 			                            }catch(e)
 			                            {
 			                                alert('Exception while resquest...');

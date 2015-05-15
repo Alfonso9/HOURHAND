@@ -75,6 +75,11 @@ class Crud_model extends CI_Model
 		$query = $this->db->get('ee');
 		return $query->row();
 	}
+
+	public function crearEE($data)
+	{
+		$this->db->insert('ee', $data);
+	}
         
     public function getCarreraEE($id)
 	{

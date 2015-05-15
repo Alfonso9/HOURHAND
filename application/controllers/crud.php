@@ -96,6 +96,24 @@ class Crud extends CI_Controller {
 		$this->load->view('EE/EE_view', $this->data);
 	}
 
+	function crearEE()
+	{
+		$data = array(	'nrcEE' => $this->input->post('nrc'),
+						'codigoCarr' => $this->input->post('carrera'),
+						'nombEE' => $this->input->post('nombre'),
+						'periodEE' => $this->input->post('periodo'),
+						'areaEE' => $this->input->post('area'),
+						'tipoEE' => $this->input->post('tipo'),
+						'hrsteoriaEE' => $this->input->post('hrsT'),
+						'hrspractEE' => $this->input->post('hrsP'),
+						'creditEE' => $this->input->post('creditos')
+						);
+		$this->crud_model->crearEE($data);
+		$this->data['query'] = $this->crud_model->getNombreEE();
+		$this->load->view('EE/seccionEE_view', $this->data);
+		
+	}
+
     function getEE()
 	{
 		$id = $this->input->post('id');
