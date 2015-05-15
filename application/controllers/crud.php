@@ -80,109 +80,54 @@ class Crud extends CI_Controller {
 		$this->data['query'] = $this->crud_model->getNombreCarr();
 		$this->load->view('carreras/seccioncarreras_view', $this->data);
 	}
-        //SECCIÓN DE EXPERIENCIAS EDUCATIVAS
-        function paginaEE()
-	{
-		$this->data['query'] = $this->crud_model->getNombreEE();
-                $this->data['query2'] = $this->crud_model->comboCarrera();
-<<<<<<< HEAD
-                $this->data['query3']= $this->crud_model->getNombreCarr();
-=======
-<<<<<<< HEAD
-                $this->data['query3']= $this->crud_model->getNombreCarr();
-=======
->>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
->>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
-		$this->load->view('EE/EE_view', $this->data);
-	}
-        function getEE()
-	{
-		$id = $this->input->post('id');
-		$this->data['ee'] = $this->crud_model->getEE($id);
-		$this->load->view('EE/seccioninfoEE_view', $this->data);
-	}
-        function getCarreraEE()
-	{
-		$id = $this->input->post('id');
-		$this->data['carrera'] = $this->crud_model->getCarreraEE($id);
-<<<<<<< HEAD
-                $this->data['query']= $this->crud_model->getNombreCarrEE($id);
-		$this->load->view('EE/seccionEE_view', $this->data);
-	}
 
-        function editarEE()
-	{
-		$id = $this->input->post('id');
-		$this->data['ee'] = $this->crud_model->getEE($id);
-                $this->data['query2'] = $this->crud_model->comboCarrera();
-                $this->data['arreglo'] = array("Básica General", "Iniciación a la Diciplina", "Diciplinaria", "Terminal");
-                $this->data['arreglo2'] = array("Obligatoria", "Optativa");
-                 $this->data['arreglo3'] = array("FEB-JUL", "AGO-ENE");
-		$this->load->view('EE/seccionformEE_view', $this->data);
-               
-	}
-
-	function eliminarEE()
-	{
-		$id = $this->input->post('id');
-		$this->crud_model->delCarrera($id);
-		$this->data['query'] = $this->crud_model->getNombreEE();
-		$this->load->view('EE/seccionEE_view', $this->data);
-	}
-        
-=======
-<<<<<<< HEAD
-                $this->data['query']= $this->crud_model->getNombreCarrEE($id);
-		$this->load->view('EE/seccionEE_view', $this->data);
-	}
-
-        function editarEE()
-	{
-		$id = $this->input->post('id');
-		$this->data['ee'] = $this->crud_model->getEE($id);
-                $this->data['query2'] = $this->crud_model->comboCarrera();
-                $this->data['arreglo'] = array("Básica General", "Iniciación a la Diciplina", "Diciplinaria", "Terminal");
-                $this->data['arreglo2'] = array("Obligatoria", "Optativa");
-                 $this->data['arreglo3'] = array("FEB-JUL", "AGO-ENE");
-		$this->load->view('EE/seccionformEE_view', $this->data);
-               
-	}
-
-	function eliminarEE()
-	{
-		$id = $this->input->post('id');
-		$this->crud_model->delCarrera($id);
-		$this->data['query'] = $this->crud_model->getNombreEE();
-		$this->load->view('EE/seccionEE_view', $this->data);
-	}
-        
-=======
-		$this->load->view('EE/seccionCarrera_EE_view', $this->data);
-	}
-
-<<<<<<< HEAD
-        function editarEE()
-	{
-		$id = $this->input->post('id');
-		$this->data['ee'] = $this->crud_model->getEE($id);
-		$this->load->view('EE/seccionformEE_view', $this->data);
-	}
-
-	function eliminarEE()
-	{
-		$id = $this->input->post('id');
-		$this->crud_model->delCarrera($id);
-		$this->data['query'] = $this->crud_model->getNombreEE();
-		$this->load->view('EE/seccionEE_view', $this->data);
-	}
-        
-=======
 	function formcrearcarrera()
 	{
 		$this->load->view('carreras/seccionformcrear_view');
 	}
 
->>>>>>> bf619624d892f01a386415cff320cb5ed62c9ae1
->>>>>>> 5cd6bfc06013ac884791a4a45d1b2fad0e31b069
->>>>>>> bf06c066704e35cec9d3c354bdd536517abbc118
+
+        //SECCIÓN DE EXPERIENCIAS EDUCATIVAS
+    function paginaEE()
+	{
+		$this->data['query'] = $this->crud_model->getNombreEE();
+        $this->data['query2'] = $this->crud_model->comboCarrera();
+        $this->data['query3']= $this->crud_model->getNombreCarr();
+		$this->load->view('EE/EE_view', $this->data);
+	}
+
+    function getEE()
+	{
+		$id = $this->input->post('id');
+		$this->data['ee'] = $this->crud_model->getEE($id);
+		$this->load->view('EE/seccioninfoEE_view', $this->data);
+	}
+
+    function getCarreraEE()
+	{
+		$id = $this->input->post('id');
+		$this->data['carrera'] = $this->crud_model->getCarreraEE($id);
+		$this->data['query']= $this->crud_model->getNombreCarrEE($id);
+		$this->load->view('EE/seccionEE_view', $this->data);
+	}
+
+    function editarEE()
+	{
+		$id = $this->input->post('id');
+		$this->data['ee'] = $this->crud_model->getEE($id);
+        $this->data['query2'] = $this->crud_model->comboCarrera();
+        $this->data['arreglo'] = array("Básica General", "Iniciación a la Diciplina", "Diciplinaria", "Terminal");
+        $this->data['arreglo2'] = array("Obligatoria", "Optativa");
+        $this->data['arreglo3'] = array("FEB-JUL", "AGO-ENE");
+		$this->load->view('EE/seccionformEE_view', $this->data);
+               
+	}
+
+	function eliminarEE()
+	{
+		$id = $this->input->post('id');
+		$this->crud_model->delCarrera($id);
+		$this->data['query'] = $this->crud_model->getNombreEE();
+		$this->load->view('EE/seccionEE_view', $this->data);
+	}
 }
