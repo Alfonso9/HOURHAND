@@ -1,4 +1,4 @@
-<?php  for ($i=0; $i < $rows; $i++) {?>  
+<?php for ($i=0; $i < $rows; $i++) {?>  
 	<div class="row-fluid">
 		<div class="col-md-1 color4">
 			<p><?php echo $entrada+$i; ?>:00</p>

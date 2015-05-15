@@ -36,7 +36,9 @@
   </div>
   <div id="disponibles" class="col-md-1 show-grid"></div>
   <div id="EE" class="col-md-1 show-grid EE"></div>
+  <!--Espacio sin usar -->
   <div id="sinUso" class="col-md-1 show-grid EE"></div>
+  <!--Espacio sin usar -->
   </div>
 </div>
 <script>
