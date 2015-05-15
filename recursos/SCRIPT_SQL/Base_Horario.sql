@@ -137,3 +137,22 @@ CREATE TABLE `maestro` (
 -- ----------------------------
 -- Records of maestro
 -- ----------------------------
+
+-- ----------------------------
+-- Trigger of aula
+-- ----------------------------
+
+DROP TRIGGER IF EXISTS aula_create;
+DELIMITER$$
+CREATE TRIGGER aula_create
+    AFTER INSERT ON aula
+    FOR EACH ROW 
+BEGIN
+    INSERT INTO horario
+     VALUES(
+        NEW.numeroAula,
+        CONCAT(NEW.numeroAula, 'HOR'),
+        7,
+        20); 
+END$$
+DELIMITER;

@@ -85,4 +85,68 @@ class Crud extends CI_Controller {
 		$this->load->view('carreras/seccionformcrear_view');
 	}
 
+	/* Nombre: paginaHorario
+	   Autor: Alfonso
+	   Descripcion: Devuelve la página de horario
+	*/
+	function paginaHorario()
+	{
+		$this->data['carreras'] = $this->crud_model->getCarreras();
+		$this->data['aulas'] = $this->crud_model->getAulas();
+		$this->load->view('horarios/horarios_view', $this->data);
+	}
+
+	/* Nombre: seccionEE
+	   Autor: Alfonso
+	   Descripcion: Devuelve la página de seccion de EE
+	*/
+	function seccionEE()
+	{	
+		$codigo = $this->input->post('codigo');
+		$this->data['ee'] = $this->crud_model->getEE($codigo);
+		$this->load->view('horarios/seccionEE_view', $this->data);
+	}
+
+	/* Nombre: seccionHorario
+	   Autor: Alfonso
+	   Descripcion: Devuelve la página de seccion de EE
+	*/
+	function seccionHorario()
+	{	
+		$numeroaula = $this->input->post('numeroaula');
+		$hora = $this->crud_model->getHorario($numeroaula);
+		if (!is_null($hora)) 
+		{
+			$this->data['rows'] = ($hora->hrSHorario + 1) - $hora->hrEHorario;
+			$this->data['entrada'] = $hora->hrEHorario;
+			$this->data['numeroaula'] = $numeroaula;
+			$this->load->view('horarios/seccionHoras_view', $this->data);
+		}else
+		{
+			echo json_encode('-1');
+		}
+	}
+
+	/* Nombre: setMovimiento
+	   Autor: Alfonso
+	   Descripcion: Recibe los datos de los elementos arrastrados
+	*/
+	function setMovimiento()
+	{	
+		$nrc = $this->input->post('nrc');
+		$id = $this->input->post('id');
+		list($dia, $hora, $numeroAula) = explode(":", $id);
+		$this->crud_model->setMovimiento($nrc, $numeroAula, $hora, $dia);
+		//echo json_encode($this->crud_model->setMovimiento($nrc, $numeroAula, $hora, $dia));
+	}
+
+	/* Nombre: getMovimiento
+	   Autor: Alfonso
+	   Descripcion: Recibe los datos de los elementos arrastrados
+	*/
+	function getMovimiento()
+	{	
+		$id = $this->input->post('numeroaula');
+		echo json_encode($this->crud_model->getMovimiento($id));
+	}
 }

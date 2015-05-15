@@ -32,3 +32,116 @@ header nav div div a:hover
 {
     margin-top: 5%;
 }
+
+/*Inicia Estilo Horarios*/
+ul.nav-tabs > li
+{
+    ;
+}
+
+ul.nav-tabs
+{
+    margin-left: 140px;
+    margin-right: 420px;
+    margin-bottom: 0px;
+}
+
+div.canvasHor
+{
+    margin-top: 0px;
+}
+
+.show-grid
+{
+    //background-color: #A0D9C4;
+    text-align: center;
+    border-radius: 3px;
+    
+}
+
+div.horario .col-md-1
+{
+    width: 110px;
+    border: 1px solid #BDF2DF;
+    line-height: 30px;
+    padding: 0px;
+}
+
+div.horario
+{
+    margin-left: 0px;
+
+}
+
+div.EE .alto2
+{
+    height: 35px;
+    width: 105px;
+    padding: 0px;
+    cursor: move;
+    border: 1px solid #BDF2DF;
+}
+
+div.EE .row
+{
+    margin-right: -100px; 
+}
+
+.alto
+{
+    line-height: 10px;
+    height: 42px;
+    padding: 0px;
+}
+
+.color1
+{
+    background-color: #A0D9C4;
+}
+
+.color2
+{
+    background-color: #F2C6AC;
+}
+
+.color3
+{
+    background-color: #A0D9C4;
+}
+
+.color4
+{
+    background-color: #F2E2CE;
+}
+
+.color5
+{
+    background-color: #F2C6AC;
+}
+/*Termina Estilo Horarios*/
+
+/*Media Querys*/
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min){
+    ul.nav-justified > li
+    {
+        width: 10px;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min){
+    ul.nav-justified > li
+    {
+        width: 10px;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min){
+    ul.nav-justified > li
+    {
+        width: 10px;
+    }
+}
+/*Media Querys*/

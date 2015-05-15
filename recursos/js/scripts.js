@@ -129,3 +129,235 @@ function delCarrera(id)
             });
 }
 
+/* Nombre: getPaginaHorario
+   Autor: Alfonso
+   Descripcion: Envia solicitud de la 
+   página de horario al controlador crud.php
+*/
+function getPaginaHorario()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaHorario",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+/* Nombre: verHorario
+   Autor: Alfonso
+   Descripcion: Envia solicitud de la 
+   página de horario al controlador crud.php
+*/
+function verHorario(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/seccionHorario",
+                data: {'numeroaula':id},
+                success: function(jso)
+                        {
+                            try
+                            {                                      
+                                $("nav > ul > li").removeClass('active');
+                                $("#"+id).addClass('active');                              
+                                if (jso.localeCompare('-1') < 0) 
+                                {
+                                    $("#row-horas").html(jso);
+                                    llenarHorario(id);
+                                }
+                                else
+                                {
+                                    alert("El aula no tiene horario establecido");
+                                };
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+/* Nombre: llenarHorario
+   Autor: Alfonso
+   Descripcion: Realiza una solcitud al controlador CRUD para
+   obtener los datos del horario de un aula en especifico
+*/
+    function llenarHorario(aula)
+    {
+        $.ajax
+            ({
+                type: "POST",
+                url: "crud/getMovimiento",
+                data: {'numeroaula':aula},
+                success: function(jso)
+                        {
+                            try
+                            {                                       
+                                jso = jQuery.parseJSON(jso);  
+                                var tag = '';
+                                var nombEE = '';
+                                var nrc = '';                            
+                                jQuery.each(jso, function(key, value)
+                                {
+                                    //tag = tag.concat('#');
+                                    jQuery.each(value, function(key, value){
+                                        //alert(key+' '+value);
+                                        if (key == 'nombEE') 
+                                        {
+                                            nombEE = value;
+                                        }else if (key == 'nrcEE')
+                                        {
+                                            nrc = value;
+                                        }
+                                        else
+                                        {
+                                            tag = tag.concat(value);
+                                            tag = tag.concat(':');
+                                        };                                                                      
+                                    });
+                                    tag = tag.concat(aula);
+                                    var div = document.createElement("div");
+                                    var input = document.createElement("input");
+                                    var p = document.createElement("p");
+                                    var t = document.createTextNode(nombEE);
+                                    p.appendChild(t);
+                                    div.appendChild(p);
+                                    div.setAttribute("id", nrc);
+                                    div.setAttribute("class", "col-md-1 color5 alto2");                                     
+                                    div.setAttribute("draggable", "true"); 
+                                    div.setAttribute("ondragstart", "drag(event)");                                    
+                                    document.getElementById(tag).appendChild(div);
+                                    tag = '';
+                                    nombEE = '';
+                                    nrc = '';
+                                });
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+    };
+
+/* Nombre: verEE
+   Autor: Alfonso
+   Descripcion: Envia solicitud de la 
+   secciòn de horario al controlador crud.php
+*/
+function verEE(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/seccionEE",
+                data: {'codigo': id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#EE").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+/* Nombre: allowDrop
+   Autor: Alfonso
+   Descripcion: Detiene el envío al arrastrar
+*/
+function allowDrop(ev) 
+{
+    ev.preventDefault();
+}
+
+/* Nombre: drag
+   Autor: Alfonso
+   Descripcion: Realiza transferencia de datos del 
+   elemento que se esta arrastrando
+*/
+function drag(ev) 
+{
+    ev.dataTransfer.setData("text", ev.target.id);
+    //$('#'+ev.target.id).draggable( {cursor: 'move'} );
+}
+
+/* Nombre: drop
+   Autor: Alfonso
+   Descripcion: Realiza acciones una vez que
+   el elemento que se esta arrastrando se ha 
+   dejado en un espacio autorizado para recibir
+   objetos. Así como envía solicitud al controlador
+   crud para guardar los movimientos.
+*/
+function drop(ev) 
+{
+    ev.preventDefault();
+    var nrc = ev.dataTransfer.getData("text");
+    if (ev.target.hasChildNodes())
+    {
+        alert("Movimiento invalido");
+    }else
+    {
+        ev.target.appendChild(document.getElementById(nrc));
+        var id = $(ev.target).attr("id"); 
+        $.ajax
+            ({
+                type: "POST",
+                url: "crud/setMovimiento",
+                data: {'nrc': nrc, "id":id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                              ;//alert(jso);                               
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+        //alert($(ev.target).attr("id"));
+        //alert(nrc);
+        //var d = document.getElementById(nrc);
+        //var ele = d.firstElementChild;
+        //alert(ele.getAttribute("value"));
+    };
+
+    
+    
+}

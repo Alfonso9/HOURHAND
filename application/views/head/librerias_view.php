@@ -16,6 +16,9 @@
 
     <link href="<?= base_url(); ?>recursos/css/estilo.css" type="text/css" rel="stylesheet">
     <link href="<?= base_url(); ?>recursos/css/normalize.css" type="text/css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="<?php base_url(); ?>recursos/bootstrap/3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php base_url(); ?>recursos/bootstrap/3.3.4/css/bootstrap-responsive.css">
     
 </head>
 <body>

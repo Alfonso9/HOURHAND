@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li>
-                    <a onclick="verMiHistorico()">
+                    <a onclick="getPaginaHorario()">
                       <i class="glyphicon glyphicon-file "></i>
                       <span>HORARIOS</span>
                     </a>
