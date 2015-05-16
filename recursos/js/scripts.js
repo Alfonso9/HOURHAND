@@ -490,7 +490,13 @@ function borrarMovimiento(id, tag)
                                     {   
                                         list.removeChild(list.firstChild);
                                     }
-                                };
+                                };                           
+                                if(document.getElementById('EE').hasChildNodes())
+                                { 
+                                    var nrcnumEE = id.split(":");
+                                    var clic = document.getElementById(nrcnumEE[0]);
+                                    clic.click();
+                                }
                             }catch(e)
                             {
                                 alert('Exception while resquest...');

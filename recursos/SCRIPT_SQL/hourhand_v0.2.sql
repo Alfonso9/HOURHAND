@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-05-16 12:45:04
+Date: 2015-05-16 17:09:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,39 +27,13 @@ CREATE TABLE `asignacion` (
   `diaAsig` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`nrcEE`,`claveHor`,`posicAsig`),
   KEY `fk_Asig_Hor_1` (`claveHor`),
-  CONSTRAINT `fk_Asig_EE_1` FOREIGN KEY (`nrcEE`) REFERENCES `ee` (`nrcEE`),
-  CONSTRAINT `fk_Asig_Hor_1` FOREIGN KEY (`claveHor`) REFERENCES `horario` (`claveHor`)
+  CONSTRAINT `fk_Asig_EE_1` FOREIGN KEY (`nrcEE`) REFERENCES `ee` (`nrcEE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_Asig_Hor_1` FOREIGN KEY (`claveHor`) REFERENCES `horario` (`claveHor`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of asignacion
 -- ----------------------------
-INSERT INTO `asignacion` VALUES ('11111', '102HOR', '1', '8', 'sabado');
-INSERT INTO `asignacion` VALUES ('11111', '102HOR', '2', '7', 'viernes');
-INSERT INTO `asignacion` VALUES ('11111', '102HOR', '3', '10', 'martes');
-INSERT INTO `asignacion` VALUES ('11111', '102HOR', '4', '8', 'jueves');
-INSERT INTO `asignacion` VALUES ('11111', '102HOR', '5', '10', 'sabado');
-INSERT INTO `asignacion` VALUES ('11112', '102HOR', '1', '7', 'martes');
-INSERT INTO `asignacion` VALUES ('11112', '102HOR', '2', '14', 'martes');
-INSERT INTO `asignacion` VALUES ('11112', '102HOR', '3', '12', 'martes');
-INSERT INTO `asignacion` VALUES ('11113', '103HOR', '1', '12', 'sabado');
-INSERT INTO `asignacion` VALUES ('11113', '103HOR', '2', '10', 'jueves');
-INSERT INTO `asignacion` VALUES ('11113', '103HOR', '3', '12', 'jueves');
-INSERT INTO `asignacion` VALUES ('11114', '102HOR', '3', '10', 'lunes');
-INSERT INTO `asignacion` VALUES ('11114', '102HOR', '5', '13', 'sabado');
-INSERT INTO `asignacion` VALUES ('11114', '103HOR', '1', '8', 'martes');
-INSERT INTO `asignacion` VALUES ('11114', '103HOR', '4', '10', 'lunes');
-INSERT INTO `asignacion` VALUES ('11114', '103HOR', '6', '10', 'sabado');
-INSERT INTO `asignacion` VALUES ('11114', 'CC2HOR', '2', '8', 'miercoles');
-INSERT INTO `asignacion` VALUES ('11115', '102HOR', '2', '16', 'lunes');
-INSERT INTO `asignacion` VALUES ('11115', '103HOR', '1', '13', 'viernes');
-INSERT INTO `asignacion` VALUES ('11115', '103HOR', '3', '14', 'martes');
-INSERT INTO `asignacion` VALUES ('12345', '102HOR', '1', '17', 'viernes');
-INSERT INTO `asignacion` VALUES ('12345', '102HOR', '2', '12', 'jueves');
-INSERT INTO `asignacion` VALUES ('12345', '102HOR', '3', '15', 'jueves');
-INSERT INTO `asignacion` VALUES ('12345', '102HOR', '4', '13', 'miercoles');
-INSERT INTO `asignacion` VALUES ('12345', '102HOR', '5', '16', 'miercoles');
-INSERT INTO `asignacion` VALUES ('12345', '102HOR', '6', '13', 'viernes');
 
 -- ----------------------------
 -- Table structure for aula
@@ -88,8 +62,8 @@ CREATE TABLE `carga` (
   `nrc` varchar(5) NOT NULL DEFAULT '',
   PRIMARY KEY (`numMtro`,`nrc`),
   KEY `fk_Carg_EE_1` (`nrc`),
-  CONSTRAINT `fk_Carg_EE_1` FOREIGN KEY (`nrc`) REFERENCES `ee` (`nrcEE`),
-  CONSTRAINT `fk_Carg_Mtro_1` FOREIGN KEY (`numMtro`) REFERENCES `maestro` (`numMtro`)
+  CONSTRAINT `fk_Carg_EE_1` FOREIGN KEY (`nrc`) REFERENCES `ee` (`nrcEE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_Carg_Mtro_1` FOREIGN KEY (`numMtro`) REFERENCES `maestro` (`numMtro`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -134,7 +108,7 @@ CREATE TABLE `ee` (
   `creditEE` int(11) DEFAULT NULL,
   PRIMARY KEY (`nrcEE`,`codigoCarr`),
   KEY `fk_EE_Carr_1` (`codigoCarr`),
-  CONSTRAINT `fk_EE_Carr_1` FOREIGN KEY (`codigoCarr`) REFERENCES `carrera` (`codigoCarr`)
+  CONSTRAINT `fk_EE_Carr_1` FOREIGN KEY (`codigoCarr`) REFERENCES `carrera` (`codigoCarr`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -158,7 +132,7 @@ CREATE TABLE `horario` (
   `hrSHorario` int(11) DEFAULT NULL,
   PRIMARY KEY (`numeroAula`,`claveHor`),
   KEY `claveHor` (`claveHor`),
-  CONSTRAINT `fk_Hor_aula_1` FOREIGN KEY (`numeroAula`) REFERENCES `aula` (`numeroAula`)
+  CONSTRAINT `fk_Hor_aula_1` FOREIGN KEY (`numeroAula`) REFERENCES `aula` (`numeroAula`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
