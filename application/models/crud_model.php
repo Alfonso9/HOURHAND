@@ -105,7 +105,7 @@ class Crud_model extends CI_Model
 	*/
 	public function getEE($id)
 	{
-		$this->db->select('nombEE, nrcEE');
+		$this->db->select('nombEE, nrcEE, hrsteoriaEE, hrspractEE, creditEE');
 		$this->db->where('codigoCarr', $id);
 		$query = $this->db->get('ee');
 		return $query->result();
@@ -135,7 +135,7 @@ class Crud_model extends CI_Model
 	 * Description: Almacena en la base datos los movimientos
 	 * cuando se realiza en el drop
 	*/
-	public function setMovimiento($nrc, $numeroAula, $hora, $dia)
+	public function setMovimiento($nrc, $numeroAula, $posicAsig, $hora, $dia)
 	{
 		$this->db->select('claveHor');
 		$this->db->where('numeroAula', $numeroAula);
@@ -146,31 +146,28 @@ class Crud_model extends CI_Model
 		 creamos el registro*/
 		$bandera = $this->db->query("SELECT EXISTS(SELECT * FROM asignacion 
 													WHERE nrcEE = '".$nrc."' 
-													AND claveHor = '".$claveHor->claveHor."') AS bool;"
+													AND claveHor = '".$claveHor->claveHor."' 
+													AND posicAsig = '".$posicAsig."') AS bool;"
 									); 
 		$bandera = $bandera->row();
-		if ($bandera->bool == 1) 
-		{
-			$data = array(				
+		$data = array(				
                	'nrcEE' => $nrc,
                	'claveHor' => $claveHor->claveHor,
-               	'posicAsig' => ' ',
+               	'posicAsig' => $posicAsig,
                	'horaAsig' => $hora,
                	'diaAsig' => $dia
             );
+
+		if ($bandera->bool == 1) 
+		{
 			$this->db->where('claveHor', $claveHor->claveHor);
 			$this->db->where('nrcEE', $nrc);
+			$this->db->where('posicAsig', $posicAsig);
 			$this->db->update('asignacion', $data); 
 		}
 		elseif ($bandera->bool == 0) 
 		{
-			$data = array(				
-               	'nrcEE' => $nrc,
-               	'claveHor' => $claveHor->claveHor,
-               	'posicAsig' => ' ',
-               	'horaAsig' => $hora,
-               	'diaAsig' => $dia
-            );
+           // return $posicAsig;
 			$this->db->insert('asignacion', $data); 
 		}	
 	}
@@ -194,7 +191,7 @@ class Crud_model extends CI_Model
 									); 
 		$bandera = $bandera->row();
 		if ($bandera->bool == 1) {
-			$this->db->select('diaAsig, horaAsig, ee.nrcEE, nombEE');
+			$this->db->select('diaAsig, horaAsig, ee.nrcEE, nombEE, posicAsig');
 			$this->db->where('claveHor', $claveHor->claveHor);
 			$this->db->from('asignacion');
 			$this->db->join('ee', 'ee.nrcEE = asignacion.nrcEE', 'right');
@@ -203,5 +200,36 @@ class Crud_model extends CI_Model
 		}elseif ($bandera->bool == 0) {
 			return 0; 
 		}	
+	}
+
+	/**
+	 * getposicAsigEE
+	 *
+	 * @author Alfonso
+	 *
+	 * Description: Consulta los movimientos hechos.
+	*/
+	public function getposicAsigEE($nrc)
+	{
+		$num = $this->db->query("SELECT posicAsig FROM asignacion 
+													WHERE nrcEE = '".$nrc."';"
+									); 
+		return $num->result();
+	}
+
+	/**
+	 * getTraslMaestro
+	 *
+	 * @author Alfonso
+	 *
+	 * Description: Consulta que los movimientos hechos no traslapen en hora y dia 
+	 * para algun maestro.
+	*/
+	public function getTraslMaestro($nrc)
+	{
+		$num = $this->db->query("SELECT posicAsig FROM asignacion 
+													WHERE nrcEE = '".$nrc."';"
+									); 
+		return $num->result();
 	}
 }

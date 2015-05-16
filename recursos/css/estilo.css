@@ -53,7 +53,6 @@ div.canvasHor
 
 .show-grid
 {
-    //background-color: #A0D9C4;
     text-align: center;
     border-radius: 3px;
     
@@ -61,50 +60,47 @@ div.canvasHor
 
 div.horario .col-md-1
 {
-    width: 110px;
+    width: 107px;
     border: 1px solid #BDF2DF;
-    line-height: 30px;
+    line-height: 25px;
     padding: 0px;
 }
 
-div.horario
+div.EE span.info
 {
-    margin-left: 0px;
-
+    padding: 0px;
+    font-size: 0.7em;
+    vertical-align: middle;
 }
 
-div.EE .alto2
+div.EEdispo
+{
+    margin-right: 30px;
+}
+
+div.EE div.alto2
 {
     height: 35px;
     width: 105px;
     padding: 0px;
     cursor: move;
     border: 1px solid #BDF2DF;
+    font-size: 0.8em;
+    vertical-align: middle;
 }
 
-div.EE .row
+div.EE div.row
 {
     margin-right: -100px; 
 }
 
-.alto
+div.alto
 {
-    line-height: 10px;
-    height: 42px;
+    height: 38px;
     padding: 0px;
 }
 
 .color1
-{
-    background-color: #A0D9C4;
-}
-
-.color2
-{
-    background-color: #F2C6AC;
-}
-
-.color3
 {
     background-color: #A0D9C4;
 }
@@ -119,29 +115,3 @@ div.EE .row
     background-color: #F2C6AC;
 }
 /*Termina Estilo Horarios*/
-
-/*Media Querys*/
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min){
-    ul.nav-justified > li
-    {
-        width: 10px;
-    }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min){
-    ul.nav-justified > li
-    {
-        width: 10px;
-    }
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min){
-    ul.nav-justified > li
-    {
-        width: 10px;
-    }
-}
-/*Media Querys*/

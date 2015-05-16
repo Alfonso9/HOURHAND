@@ -133,11 +133,12 @@ class Crud extends CI_Controller {
 	*/
 	function setMovimiento()
 	{	
-		$nrc = $this->input->post('nrc');
+		$nrcEE = $this->input->post('nrc');
 		$id = $this->input->post('id');
+		list($nrc, $numEE) = explode(":", $nrcEE);
 		list($dia, $hora, $numeroAula) = explode(":", $id);
-		$this->crud_model->setMovimiento($nrc, $numeroAula, $hora, $dia);
-		//echo json_encode($this->crud_model->setMovimiento($nrc, $numeroAula, $hora, $dia));
+		$this->crud_model->setMovimiento($nrc, $numeroAula, $numEE, $hora, $dia);
+		//echo json_encode($this->crud_model->setMovimiento($nrc, $numeroAula, $numEE, $hora, $dia));
 	}
 
 	/* Nombre: getMovimiento
@@ -148,5 +149,15 @@ class Crud extends CI_Controller {
 	{	
 		$id = $this->input->post('numeroaula');
 		echo json_encode($this->crud_model->getMovimiento($id));
+	}
+
+	/* Nombre: getposicAsigEE
+	   Autor: Alfonso
+	   Descripcion: Devuleve el campo EE posicAsig con el id especifico
+	*/
+	function getposicAsigEE()
+	{	
+		$id = $this->input->post('nrc');
+		echo json_encode($this->crud_model->getposicAsigEE($id));
 	}
 }

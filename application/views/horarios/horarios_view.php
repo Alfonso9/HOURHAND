@@ -34,10 +34,10 @@
     </div>
     <div id="row-horas"></div>
   </div>
-  <div id="disponibles" class="col-md-1 show-grid"></div>
+  <div id="EEdisp" class="col-md-1 show-grid EE EEdispo"></div>
   <div id="EE" class="col-md-1 show-grid EE"></div>
   <!--Espacio sin usar -->
-  <div id="sinUso" class="col-md-1 show-grid EE"></div>
+  <div id="sinUso" class="col-md-1 show-grid"></div>
   <!--Espacio sin usar -->
   </div>
 </div>

@@ -216,7 +216,8 @@ function verHorario(id)
                                 jso = jQuery.parseJSON(jso);  
                                 var tag = '';
                                 var nombEE = '';
-                                var nrc = '';                            
+                                var nrc = ''; 
+                                var posicAsig = '';                           
                                 jQuery.each(jso, function(key, value)
                                 {
                                     //tag = tag.concat('#');
@@ -229,7 +230,10 @@ function verHorario(id)
                                         {
                                             nrc = value;
                                         }
-                                        else
+                                        else if (key == 'posicAsig')
+                                        {
+                                            posicAsig = value;
+                                        }else
                                         {
                                             tag = tag.concat(value);
                                             tag = tag.concat(':');
@@ -242,14 +246,15 @@ function verHorario(id)
                                     var t = document.createTextNode(nombEE);
                                     p.appendChild(t);
                                     div.appendChild(p);
-                                    div.setAttribute("id", nrc);
-                                    div.setAttribute("class", "col-md-1 color5 alto2");                                     
+                                    div.setAttribute("id", nrc+':'+posicAsig);
+                                    div.setAttribute("class", "col-md-1 color5 alto2 EE");                                     
                                     div.setAttribute("draggable", "true"); 
                                     div.setAttribute("ondragstart", "drag(event)");                                    
                                     document.getElementById(tag).appendChild(div);
                                     tag = '';
                                     nombEE = '';
                                     nrc = '';
+                                    var posicAsig = '';
                                 });
                             }catch(e)
                             {
@@ -330,7 +335,7 @@ function drop(ev)
     }else
     {
         ev.target.appendChild(document.getElementById(nrc));
-        var id = $(ev.target).attr("id"); 
+        var id = $(ev.target).attr("id");
         $.ajax
             ({
                 type: "POST",
@@ -340,7 +345,7 @@ function drop(ev)
                         {
                             try
                             {     
-                              ;//alert(jso);                               
+                              ;//alert(jso);                            
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -348,7 +353,7 @@ function drop(ev)
                         },
                 error:  function()
                         {
-                            alert('Error while resquest..');
+                            alert('Error while resquest drop..');
                         }
             });
         //alert($(ev.target).attr("id"));
@@ -357,7 +362,87 @@ function drop(ev)
         //var ele = d.firstElementChild;
         //alert(ele.getAttribute("value"));
     };
-
-    
-    
 }
+
+/* Nombre: getposicAsigEE 
+   Autor: Alfonso
+   Descripcion: Muestra las EE disponibles 
+   para arrasttrar de acuerdo a las horas 
+   que se hayan registrado en tabla ee
+*/
+function EEdispon(hrs, e, nrc) 
+{
+    // Get the <ul> element with id="myList"
+    var list = document.getElementById("EEdisp");
+
+    // As long as <ul> has a child node, remove it
+    while (list.hasChildNodes()) {   
+        list.removeChild(list.firstChild);
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "crud/getposicAsigEE",
+        data: {'nrc': nrc},
+        success: function(jso)
+                {
+                    try
+                    {     
+                        var obj = JSON.parse(jso);
+                        var b = false;
+                        for (var i = 1; i <= hrs; i++) 
+                        {
+                            for (var j = 0; j < obj.length; j++) 
+                            {
+                                if (obj[j].posicAsig == i) 
+                                {
+                                    b = true;
+                                    break;
+                                };
+                            };
+                            if(b == true)
+                            {
+                                b = false;
+                                continue;
+                            };
+                            var div = document.createElement("div");
+                            var input = document.createElement("input");
+                            var span = document.createElement("span");
+                            var t = document.createTextNode(e);
+                            span.appendChild(t);
+                            div.appendChild(span);
+                            div.setAttribute("id", nrc.concat(':'+i));
+                            div.setAttribute("class", "show-grid color5 col-md-1 alto2");                                     
+                            div.setAttribute("draggable", "true"); 
+                            div.setAttribute("ondragstart", "drag(event)"); 
+                            var br = document.createElement("br");
+                            div.appendChild(br);
+                            var divrow = document.createElement("div");  
+                            divrow.setAttribute("class", "row ");  
+                            divrow.appendChild(div);             
+                            document.getElementById("EEdisp").appendChild(divrow);
+                        };          
+                    }catch(e)
+                    {
+                        alert('Exception while resquest...');
+                    }                       
+                },
+        error:  function()
+                {
+                    alert('Error while resquest..');
+                }
+    });
+}
+
+/* Nombre: EEdispon 
+   Autor: Alfonso
+   Descripcion: Muestra las EE disponibles 
+   para arrasttrar de acuerdo a las horas 
+   que se hayan registrado en tabla ee
+*/
+function eliEEHorario(ev) 
+{
+    var id = $(ev.target).attr("id");
+    alert(id);
+}
+
