@@ -89,6 +89,19 @@ div.EE div.alto2
     vertical-align: middle;
 }
 
+div.EE div.alto2 span.glyphicon
+{
+    right: -45px;
+    top: -5px;
+    color:  #F2E2CE;
+    cursor: pointer;
+}
+
+div.EE div.alto2 p.nombre
+{
+    margin-top: -20px;
+}
+
 div.EE div.row
 {
     margin-right: -100px; 

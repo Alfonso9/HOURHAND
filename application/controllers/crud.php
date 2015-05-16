@@ -160,4 +160,15 @@ class Crud extends CI_Controller {
 		$id = $this->input->post('nrc');
 		echo json_encode($this->crud_model->getposicAsigEE($id));
 	}
+
+	/* Nombre: borrarMovimiento
+	   Autor: Alfonso
+	   Descripcion: Recibe los datos del elemento a borrar
+	*/
+	function borrarMovimiento()
+	{	
+		$id = $this->input->post('id');
+		list($nrc, $aula, $posicAsig) = explode(":", $id);
+		echo json_encode($this->crud_model->borrarMovimiento($nrc, $aula, $posicAsig));
+	}
 }

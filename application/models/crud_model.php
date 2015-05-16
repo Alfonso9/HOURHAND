@@ -218,18 +218,35 @@ class Crud_model extends CI_Model
 	}
 
 	/**
-	 * getTraslMaestro
+	 * borrarMovimiento
 	 *
 	 * @author Alfonso
 	 *
-	 * Description: Consulta que los movimientos hechos no traslapen en hora y dia 
-	 * para algun maestro.
+	 * Description: Borra el elemento de la base de datos
 	*/
-	public function getTraslMaestro($nrc)
+	public function borrarMovimiento($nrc, $numeroAula, $posicAsig)
 	{
-		$num = $this->db->query("SELECT posicAsig FROM asignacion 
-													WHERE nrcEE = '".$nrc."';"
+		$this->db->select('claveHor');
+		$this->db->where('numeroAula', $numeroAula);
+		$claveHor = $this->db->get('horario');
+		$claveHor = $claveHor->row();
+		/*Cosultamos en la base para ver los movimientos*/
+		$bandera = $this->db->query("SELECT EXISTS(SELECT * FROM asignacion 
+													WHERE 	nrcEE = '".$nrc."' AND
+															claveHor = '".$claveHor->claveHor."' AND
+															posicAsig = '".$posicAsig."') AS bool;"
 									); 
-		return $num->result();
+		$bandera = $bandera->row();
+		if ($bandera->bool == 1) 
+		{
+			$this->db->where('nrcEE', $nrc);
+			$this->db->where('claveHor', $claveHor->claveHor);
+			$this->db->where('posicAsig', $posicAsig); 
+			$this->db->delete('asignacion');
+			return 1;
+		}elseif ($bandera->bool == 0) 
+		{
+			return 0; 
+		}	
 	}
 }

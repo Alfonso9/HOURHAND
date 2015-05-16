@@ -241,10 +241,14 @@ function verHorario(id)
                                     });
                                     tag = tag.concat(aula);
                                     var div = document.createElement("div");
-                                    var input = document.createElement("input");
+                                    var span = document.createElement("span");
                                     var p = document.createElement("p");
                                     var t = document.createTextNode(nombEE);
+                                    span.setAttribute("onclick", "borrarMovimiento('"+nrc+':'+aula+':'+posicAsig+"', '"+tag+"')");
+                                    span.setAttribute("class", "glyphicon glyphicon-remove-sign");
+                                    p.setAttribute("class", "nombre");
                                     p.appendChild(t);
+                                    div.appendChild(span);
                                     div.appendChild(p);
                                     div.setAttribute("id", nrc+':'+posicAsig);
                                     div.setAttribute("class", "col-md-1 color5 alto2 EE");                                     
@@ -344,8 +348,36 @@ function drop(ev)
                 success: function(jso)
                         {
                             try
-                            {     
-                              ;//alert(jso);                            
+                            {       
+                                var nrcnumEE = nrc.split(":");
+                                var ide = id.split(":");
+                                var span = document.createElement("span");
+                                span.setAttribute("onclick", "borrarMovimiento('"+nrcnumEE[0]+':'+ide[2]+':'+nrcnumEE[1]+"', '"+id+"')");
+                                span.setAttribute("class", "glyphicon glyphicon-remove-sign");
+                                var d = document.getElementById(nrc).children;
+                                var ele = '';
+                                for (var i = 0; i < d.length; i++) 
+                                {
+                                    if(d[i].nodeName == 'P')
+                                    {
+                                        ele = d[i];
+                                        break;
+                                    }
+                                };  
+                                                                    
+                                document.getElementById(nrc).className = "";
+                                document.getElementById(nrc).setAttribute("class", "col-md-1 color5 alto2 EE");
+                                // Get the <ul> element with id="myList"
+                                var list = document.getElementById(nrc);
+                                // As long as <ul> has a child node, remove it
+                                while (list.hasChildNodes())
+                                {   
+                                    list.removeChild(list.firstChild);
+                                };
+                                ele.setAttribute("class", "nombre");
+                                //alert(ele.innerHTML);
+                                document.getElementById(nrc).appendChild(span);  
+                                document.getElementById(nrc).appendChild(ele);                      
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -358,9 +390,6 @@ function drop(ev)
             });
         //alert($(ev.target).attr("id"));
         //alert(nrc);
-        //var d = document.getElementById(nrc);
-        //var ele = d.firstElementChild;
-        //alert(ele.getAttribute("value"));
     };
 }
 
@@ -407,10 +436,10 @@ function EEdispon(hrs, e, nrc)
                             };
                             var div = document.createElement("div");
                             var input = document.createElement("input");
-                            var span = document.createElement("span");
+                            var p = document.createElement("p");
                             var t = document.createTextNode(e);
-                            span.appendChild(t);
-                            div.appendChild(span);
+                            p.appendChild(t);
+                            div.appendChild(p);
                             div.setAttribute("id", nrc.concat(':'+i));
                             div.setAttribute("class", "show-grid color5 col-md-1 alto2");                                     
                             div.setAttribute("draggable", "true"); 
@@ -440,9 +469,37 @@ function EEdispon(hrs, e, nrc)
    para arrasttrar de acuerdo a las horas 
    que se hayan registrado en tabla ee
 */
-function eliEEHorario(ev) 
+function borrarMovimiento(id, tag) 
 {
-    var id = $(ev.target).attr("id");
-    alert(id);
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/borrarMovimiento",
+                data: {"id":id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                var bandera = parseInt(JSON.parse(jso));
+                                if (bandera == 1) 
+                                {
+                                     // Get the <ul> element with id="myList"
+                                    var list = document.getElementById(tag);
+                                    // As long as <ul> has a child node, remove it
+                                    while (list.hasChildNodes())
+                                    {   
+                                        list.removeChild(list.firstChild);
+                                    }
+                                };
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
 }
 
