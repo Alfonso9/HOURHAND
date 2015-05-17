@@ -22,7 +22,7 @@ header nav div div a:hover
 .modal-header{
     padding-left: 40px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 .form-control{
@@ -35,6 +35,11 @@ header nav div div a:hover
 }
 
 /*Inicia Estilo Horarios*/
+nav.nav
+{
+    margin-top: -100px;
+}
+
 ul.nav-tabs > li
 {
     ;

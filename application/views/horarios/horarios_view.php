@@ -1,4 +1,4 @@
-<nav>
+<nav class="nav">
   <h2>HORARIOS</h2>
 </nav>
 <div id="alertaHorarios"></div>

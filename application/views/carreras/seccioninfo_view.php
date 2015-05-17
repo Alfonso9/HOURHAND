@@ -1,4 +1,11 @@
-<h2><?php echo $carrera->nombreCarr; ?></h2>
+<div>
+	<figure>
+		<img 	src="<?= base_url(); ?>recursos/images/carreras/<?php echo $carrera->nombreCarr?>.png" 
+				alt=""
+				style="width:300px; heigth: 150px;">
+	</figure>
+	<h2><?php echo $carrera->nombreCarr; ?></h2>
+</div>
 <div class="form-group" >
 	<label for="">Código</label><br>
 	<label for=""><?php echo $carrera->codigoCarr; ?></label>
