@@ -8,8 +8,9 @@ header nav div div a:hover
 	cursor: pointer;
 }
 
-.modal-dialog{
-    width: 400px;
+.modal-dialog
+{
+    width: 250px;
 }
 
 .modal-content{
@@ -30,7 +31,7 @@ header nav div div a:hover
 
 .container-fluid
 {
-    margin-top: 5%;
+    margin-top: 9%;
 }
 
 /*Inicia Estilo Horarios*/

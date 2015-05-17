@@ -137,8 +137,8 @@ class Crud extends CI_Controller {
 		$id = $this->input->post('id');
 		list($nrc, $numEE) = explode(":", $nrcEE);
 		list($dia, $hora, $numeroAula) = explode(":", $id);
-		$this->crud_model->setMovimiento($nrc, $numeroAula, $numEE, $hora, $dia);
-		//echo json_encode($this->crud_model->setMovimiento($nrc, $numeroAula, $numEE, $hora, $dia));
+		//$this->crud_model->setMovimiento($nrc, $numeroAula, $numEE, $hora, $dia);
+		echo json_encode($this->crud_model->setMovimiento($nrc, $numeroAula, $numEE, $hora, $dia));
 	}
 
 	/* Nombre: getMovimiento

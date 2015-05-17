@@ -144,12 +144,25 @@ class Crud_model extends CI_Model
 		/*Cosultamos en la base para ver si ya se habia almacenado antes,
 		si existe ($bandera = 1) entonces actualizamos y si no ($bandera = 0),
 		 creamos el registro*/
-		$bandera = $this->db->query("SELECT EXISTS(SELECT * FROM asignacion 
+		$existe = $this->db->query("SELECT EXISTS(SELECT * FROM asignacion 
 													WHERE nrcEE = '".$nrc."' 
 													AND claveHor = '".$claveHor->claveHor."' 
 													AND posicAsig = '".$posicAsig."') AS bool;"
-									); 
-		$bandera = $bandera->row();
+									);
+		$traslape = $this->db->query("SELECT EXISTS(SELECT * FROM asignacion 
+															WHERE 	nrcEE = '".$nrc."' AND
+															 		horaAsig = '".$hora."' AND
+																	diaAsig = '".$dia."') AS bool"
+									);
+		$traslMaestro = $this->db->query("SELECT valTraslMaestro(	'".$nrc."',
+																	'".$claveHor->claveHor."', 
+																	'".$dia."', 
+																	'".$hora."') AS func"
+									);
+
+		$existe = $existe->row();
+		$traslape = $traslape->row();
+		$traslMaestro = $traslMaestro->row();
 		$data = array(				
                	'nrcEE' => $nrc,
                	'claveHor' => $claveHor->claveHor,
@@ -158,14 +171,50 @@ class Crud_model extends CI_Model
                	'diaAsig' => $dia
             );
 
-		if ($bandera->bool == 1) 
+		if ($traslape->bool == 1) 
+		{
+			$this->db->select('nombEE');
+			$this->db->where('nrcEE', $nrc);
+			$nombEE = $this->db->get('ee');
+			$nombEE = $nombEE->row();
+			return "<strong>Traslape:</strong> EE: <strong>".$nombEE->nombEE."</strong> Dia: <strong>"
+															.$dia."</strong> Hora: <strong>"
+															.$hora.":00 hrs</strong>";
+		}elseif ($traslMaestro->func == 1) 
+		{
+			$this->db->select('nrcEE, numMtro');
+			$this->db->where('horaAsig', $hora);
+			$this->db->where('diaAsig', $dia);
+			$this->db->where('claveHor !=', $claveHor->claveHor);
+			$this->db->from('asignacion');
+			$this->db->join('carga', 'carga.nrc = asignacion.nrcEE');
+			$carga = $this->db->get();
+			$carga = $carga->result();
+			$this->db->select('nombMtro');
+			$this->db->where('numMtro', $carga[0]->numMtro);
+			$maestro = $this->db->get('maestro');
+			$maestro = $maestro->result();
+			$this->db->select('nombEE');
+			$this->db->where('nrcEE', $carga[0]->nrcEE);
+			$ee = $this->db->get('ee');
+			$ee = $ee->row();
+			$this->db->select('nombEE');
+			$this->db->where('nrcEE', $nrc);
+			$eeA = $this->db->get('ee');
+			$eeA = $eeA->row();
+			return "<strong>Traslape:</strong> 	MAESTRO: <strong>".$maestro[0]->nombMtro.
+												"</strong> EE: <strong>".$ee->nombEE.
+												"</strong> con EE: <strong>".$eeA->nombEE.
+												"</strong> Dia: <strong>".$dia.
+												"</strong> Hora: <strong>".$hora.":00 hrs</strong>";
+		}elseif ($existe->bool == 1) 
 		{
 			$this->db->where('claveHor', $claveHor->claveHor);
 			$this->db->where('nrcEE', $nrc);
 			$this->db->where('posicAsig', $posicAsig);
 			$this->db->update('asignacion', $data); 
 		}
-		elseif ($bandera->bool == 0) 
+		elseif ($existe->bool == 0) 
 		{
            // return $posicAsig;
 			$this->db->insert('asignacion', $data); 

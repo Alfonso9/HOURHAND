@@ -1,6 +1,7 @@
 <nav>
   <h2>HORARIOS</h2>
 </nav>
+<div id="alertaHorarios"></div>
 <nav>
     <ul class="nav nav-tabs aulas">
       <?php foreach($aulas as $aula): ?>

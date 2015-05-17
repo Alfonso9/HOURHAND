@@ -175,7 +175,7 @@ function verHorario(id)
                             try
                             {                                      
                                 $("nav > ul > li").removeClass('active');
-                                $("#"+id).addClass('active');                              
+                                $("#"+id).addClass('active');                            
                                 if (jso.localeCompare('-1') < 0) 
                                 {
                                     $("#row-horas").html(jso);
@@ -335,7 +335,7 @@ function drop(ev)
     var nrc = ev.dataTransfer.getData("text");
     if (ev.target.hasChildNodes())
     {
-        alert("Movimiento invalido");
+         mostrarAlerta("Movimiento invalido");
     }else
     {
         ev.target.appendChild(document.getElementById(nrc));
@@ -348,36 +348,58 @@ function drop(ev)
                 success: function(jso)
                         {
                             try
-                            {       
-                                var nrcnumEE = nrc.split(":");
-                                var ide = id.split(":");
-                                var span = document.createElement("span");
-                                span.setAttribute("onclick", "borrarMovimiento('"+nrcnumEE[0]+':'+ide[2]+':'+nrcnumEE[1]+"', '"+id+"')");
-                                span.setAttribute("class", "glyphicon glyphicon-remove-sign");
-                                var d = document.getElementById(nrc).children;
-                                var ele = '';
-                                for (var i = 0; i < d.length; i++) 
+                            {    
+                                if (jso != "null") 
                                 {
-                                    if(d[i].nodeName == 'P')
-                                    {
-                                        ele = d[i];
-                                        break;
+                                    mostrarAlerta(jQuery.parseJSON(jso));
+                                    // Get the <ul> element with id="myList"
+                                    var list = document.getElementById(id);
+                                    // As long as <ul> has a child node, remove it
+                                    while (list.hasChildNodes())
+                                    {   
+                                        list.removeChild(list.firstChild);
+                                    };
+                                    if(document.getElementById('EE').hasChildNodes())
+                                    { 
+                                        var nrcEE = nrc.split(":");                                      
+                                        var clic = document.getElementById(nrcEE[0]);
+                                        clic.click();
                                     }
-                                };  
-                                                                    
-                                document.getElementById(nrc).className = "";
-                                document.getElementById(nrc).setAttribute("class", "col-md-1 color5 alto2 EE");
-                                // Get the <ul> element with id="myList"
-                                var list = document.getElementById(nrc);
-                                // As long as <ul> has a child node, remove it
-                                while (list.hasChildNodes())
-                                {   
-                                    list.removeChild(list.firstChild);
-                                };
-                                ele.setAttribute("class", "nombre");
-                                //alert(ele.innerHTML);
-                                document.getElementById(nrc).appendChild(span);  
-                                document.getElementById(nrc).appendChild(ele);                      
+                                    var aula = id.split(":"); 
+                                    llenarHorario(aula[2]);
+                                }
+                                else
+                                {
+                                    var nrcnumEE = nrc.split(":");
+                                    var ide = id.split(":");
+                                    var span = document.createElement("span");
+                                    span.setAttribute("onclick", "borrarMovimiento('"+nrcnumEE[0]+':'+ide[2]+':'+nrcnumEE[1]+"', '"+id+"')");
+                                    span.setAttribute("class", "glyphicon glyphicon-remove-sign");
+                                    var d = document.getElementById(nrc).children;
+                                    var ele = '';
+                                    for (var i = 0; i < d.length; i++) 
+                                    {
+                                        if(d[i].nodeName == 'P')
+                                        {
+                                            ele = d[i];
+                                            break;
+                                        }
+                                    };  
+                                                                        
+                                    document.getElementById(nrc).className = "";
+                                    document.getElementById(nrc).setAttribute("class", "col-md-1 color5 alto2 EE");
+                                    // Get the <ul> element with id="myList"
+                                    var list = document.getElementById(nrc);
+                                    // As long as <ul> has a child node, remove it
+                                    while (list.hasChildNodes())
+                                    {   
+                                        list.removeChild(list.firstChild);
+                                    };
+                                    ele.setAttribute("class", "nombre");
+                                    //alert(ele.innerHTML);
+                                    document.getElementById(nrc).appendChild(span);  
+                                    document.getElementById(nrc).appendChild(ele);    
+                                };                 
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -393,7 +415,7 @@ function drop(ev)
     };
 }
 
-/* Nombre: getposicAsigEE 
+/* Nombre: EEdispon 
    Autor: Alfonso
    Descripcion: Muestra las EE disponibles 
    para arrasttrar de acuerdo a las horas 
@@ -463,11 +485,9 @@ function EEdispon(hrs, e, nrc)
     });
 }
 
-/* Nombre: EEdispon 
+/* Nombre: borrarMovimiento 
    Autor: Alfonso
-   Descripcion: Muestra las EE disponibles 
-   para arrasttrar de acuerdo a las horas 
-   que se hayan registrado en tabla ee
+   Descripcion: Borra el movimiento seleccionado
 */
 function borrarMovimiento(id, tag) 
 {
@@ -509,3 +529,41 @@ function borrarMovimiento(id, tag)
             });
 }
 
+/* Nombre: mostrarAlerta 
+   Autor: Alfonso
+   Descripcion: Muestra la alerta en la pantalla
+*/
+function mostrarAlerta(msj) 
+{
+    var close = document.createElement("button");
+    var spa = document.createElement("span");
+    var alerta = document.getElementById("alertaHorarios");
+    close.setAttribute("type", "button");
+    close.setAttribute("onclick", "quitarAlerta()");
+    close.setAttribute("class", "close");
+    close.setAttribute("data-dismiss", "alert");
+    close.setAttribute("aria-label", "Close");
+    spa.setAttribute("aria-hidden", "true");
+    spa.innerHTML = "&times;";
+    close.appendChild(spa);  
+    alerta.setAttribute("class", "alert alert-warning");
+    alerta.setAttribute("role", "alert");
+    alerta.innerHTML = msj;
+    alerta.appendChild(close);                    
+}
+
+/* Nombre: quitarAlerta 
+   Autor: Alfonso
+   Descripcion: Borra la alerta de la pantalla
+*/
+function quitarAlerta() 
+{
+     // Get the <ul> element with id="myList"
+    var list = document.getElementById("alertaHorarios");
+    list.className = '';
+    // As long as <ul> has a child node, remove it
+    while (list.hasChildNodes())
+    {   
+        list.removeChild(list.firstChild);
+    }
+}
