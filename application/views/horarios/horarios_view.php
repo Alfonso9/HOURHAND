@@ -14,11 +14,11 @@
     </ul>
 </nav>
 <div class="container-fluid canvasHor">
-  <div class="col-md-1 show-grid">
+  <div class="col-md-1 show-grid selectCarr">
     <select name="carreras">
       <?php foreach($carreras as $carrera): ?>
         <option onclick="verEE('<?php echo $carrera->codigoCarr; ?>')" >
-                  <?php echo $carrera->nombreCarr; ?>
+                  <a><?php echo $carrera->nombreCarr; ?></a>
         </option>
       <?php endforeach; ?>
     </select>
@@ -40,7 +40,6 @@
   <!--Espacio sin usar -->
   <div id="sinUso" class="col-md-1 show-grid"></div>
   <!--Espacio sin usar -->
-  </div>
 </div>
 <script>
   

@@ -42,14 +42,22 @@ ul.nav-tabs > li
 
 ul.nav-tabs
 {
-    margin-left: 140px;
-    margin-right: 420px;
+    width: 750px;
+    margin-left: 185px;
+    margin-right: 0px;
     margin-bottom: 0px;
+}
+
+div.selectCarr
+{
+    margin-left: -10px;
+    margin-right: 35px; 
 }
 
 div.canvasHor
 {
     margin-top: 0px;
+    margin-left: -20px;
 }
 
 .show-grid
@@ -57,6 +65,11 @@ div.canvasHor
     text-align: center;
     border-radius: 3px;
     
+}
+
+div.horario
+{
+    margin-left: 40px;
 }
 
 div.horario .col-md-1

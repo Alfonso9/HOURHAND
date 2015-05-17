@@ -335,7 +335,7 @@ function drop(ev)
     var nrc = ev.dataTransfer.getData("text");
     if (ev.target.hasChildNodes())
     {
-         mostrarAlerta("Movimiento invalido");
+         mostrarAlerta("Movimiento invalido", "alertaHorarios");
     }else
     {
         ev.target.appendChild(document.getElementById(nrc));
@@ -351,7 +351,7 @@ function drop(ev)
                             {    
                                 if (jso != "null") 
                                 {
-                                    mostrarAlerta(jQuery.parseJSON(jso));
+                                    mostrarAlerta(jQuery.parseJSON(jso), "alertaHorarios");
                                     // Get the <ul> element with id="myList"
                                     var list = document.getElementById(id);
                                     // As long as <ul> has a child node, remove it
@@ -533,33 +533,33 @@ function borrarMovimiento(id, tag)
    Autor: Alfonso
    Descripcion: Muestra la alerta en la pantalla
 */
-function mostrarAlerta(msj) 
+function mostrarAlerta(msj, alerta) 
 {
     var close = document.createElement("button");
     var spa = document.createElement("span");
-    var alerta = document.getElementById("alertaHorarios");
+    var alert = document.getElementById(alerta);
     close.setAttribute("type", "button");
-    close.setAttribute("onclick", "quitarAlerta()");
+    close.setAttribute("onclick", "quitarAlerta('"+alerta+"')");
     close.setAttribute("class", "close");
     close.setAttribute("data-dismiss", "alert");
     close.setAttribute("aria-label", "Close");
     spa.setAttribute("aria-hidden", "true");
     spa.innerHTML = "&times;";
     close.appendChild(spa);  
-    alerta.setAttribute("class", "alert alert-warning");
-    alerta.setAttribute("role", "alert");
-    alerta.innerHTML = msj;
-    alerta.appendChild(close);                    
+    alert.setAttribute("class", "alert alert-warning");
+    alert.setAttribute("role", "alert");
+    alert.innerHTML = msj;
+    alert.appendChild(close);                    
 }
 
 /* Nombre: quitarAlerta 
    Autor: Alfonso
    Descripcion: Borra la alerta de la pantalla
 */
-function quitarAlerta() 
+function quitarAlerta(alerta) 
 {
      // Get the <ul> element with id="myList"
-    var list = document.getElementById("alertaHorarios");
+    var list = document.getElementById(alerta);
     list.className = '';
     // As long as <ul> has a child node, remove it
     while (list.hasChildNodes())
