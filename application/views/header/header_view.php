@@ -15,7 +15,7 @@
         <div id="sidebar-wrapper">            
             <ul class="sidebar-nav">
                 <li>
-                    <a onclick="verConvocatorias()">
+                    <a onclick="Inicio()">
                       <i class="glyphicon glyphicon-home"></i>
                       <span>INICIO</span>
                     </a>

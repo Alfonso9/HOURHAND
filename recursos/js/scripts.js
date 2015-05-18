@@ -8,7 +8,6 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
-
 function Carreras()
 {
 	$.ajax
@@ -178,13 +177,13 @@ function getAula(id)
             });
 }
 
-function editAula(codigo)
+function editAula(numero)
 {
     $.ajax
             ({
                 type: "POST",
                 url: "crud/editarAula",
-                data: {'codigo':codigo},
+                data: {'numero':numero},
                 success: function(jso)
                         {
                             try
@@ -251,9 +250,6 @@ function delAula(id)
 }
 
 
-
-/////////////////////////MAESTROS///////////////////////////////
-
 function Maestros()
 {
     $.ajax
@@ -302,7 +298,7 @@ function getMaestro(id)
             });
 }
 
-function editMaestro(codigo)
+function editMaestro(numero)
 {
     $.ajax
             ({

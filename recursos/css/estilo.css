@@ -32,3 +32,16 @@ header nav div div a:hover
 {
     margin-top: 5%;
 }
+
+.my-fluid-container 
+{
+
+  padding-left: 15px;
+
+  padding-right: 15px;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+}

@@ -8,7 +8,7 @@ class Crud extends CI_Controller {
 		$this->load->model("crud_model");
 		$this->load->view('pagina_principal/principal_view');
 	}
-
+	
 	function paginaCarreras()
 	{
 		$this->data['query'] = $this->crud_model->getNombreCarr();
