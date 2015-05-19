@@ -1,11 +1,11 @@
 .titulo
 {
-	color: white;
+  color: white;
 }
 
 header nav div div a:hover
 {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .modal-dialog
@@ -148,16 +148,82 @@ div.alto
 }
 /*Termina Estilo Horarios*/
 
-.my-fluid-container 
+/*Inicia estilo de pagina principal*/
+
+.grid6
 {
-
-  padding-left: 15px;
-
-  padding-right: 15px;
-
-  margin-left: auto;
-
-  margin-right: auto;
-
+    background-color: #21CC6D;
+    text-align: center;
+    font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+    height: 300px;
+    padding-top: 100px;
+    margin-bottom: 5px;
 }
 
+.grid4
+{
+    background-color: #21CC6D;
+    text-align: center;
+    font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+    height: 80px;
+    padding-top: 4px;
+}
+
+.grid3
+{
+    background-color: #21CC6D;
+    text-align: center;
+    font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+    height: 150px;
+    padding-top: 40px;
+}
+
+.colorbloque a
+{
+    color: white;
+}
+
+.imgcareras
+{ 
+    width: 562px;
+    margin-left: -15px;
+}
+
+.imgmaterias
+{
+    width: 395px;
+    margin-top: -90px;
+    margin-left: -15px;
+    margin-bottom: 5px;
+}
+
+.imgmaestros
+{
+    width: 395px;
+    margin-left: -15px;
+}
+
+.imgaulas
+{
+    width: 395px;
+    margin-top: -90px;
+    margin-left: -15px;
+}
+
+.imghorarios
+{
+    width: 297px;
+    margin-left: -15px;
+}
+
+.imgreportes
+{
+    width: 297px;
+    margin-left: -15px;
+    margin-bottom: 5px;
+}
+
+.container.container-fluid
+{
+    margin-top: -6%;
+}

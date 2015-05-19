@@ -15,7 +15,7 @@
         <div id="sidebar-wrapper">            
             <ul class="sidebar-nav">
                 <li>
-                    <a onclick="Inicio()">
+                    <a onclick="paginaInicio()">
                       <i class="glyphicon glyphicon-home"></i>
                       <span>INICIO</span>
                     </a>
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a onclick="verMiHistorico()">
+                    <a onclick="">
                       <i class="glyphicon glyphicon-file "></i>
                       <span>REPORTES</span>
                     </a>

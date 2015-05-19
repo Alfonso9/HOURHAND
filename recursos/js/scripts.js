@@ -8,6 +8,30 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
+function paginaInicio()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaInicio",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
 /**************************************************** CARRERAS **************************************************************/
 
 function Carreras()

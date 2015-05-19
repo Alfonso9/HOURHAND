@@ -324,5 +324,10 @@ function paginaAulas()
 		list($nrc, $aula, $posicAsig) = explode(":", $id);
 		echo json_encode($this->crud_model->borrarMovimiento($nrc, $aula, $posicAsig));
 	}
+
+	function paginaInicio()
+	{
+		$this->load->view('pagina_principal/inicio_view');
+	}
 }
 
