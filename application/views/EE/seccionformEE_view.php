@@ -1,4 +1,4 @@
-<form id="formCrearEE" action="crud/crearEE">
+<form id="formCrearEE" action="crud/actualizarEE">
     <div class="form-group" >
         <label for="">Carrera</label><br>
         <select id="carreraEE" name="carreraEE">
@@ -73,11 +73,6 @@
                         <?php } ?>
             <?php endforeach; ?>
         </select>
-    </div>
-    <div class="form-group">
-        <label for="">Créditos</label><br>
-        <input type="text" id="creditos" name="creditos" placeholder="Créditos" 
-        value="<?php echo $ee->creditEE; ?>">
     </div>
     <div class="form-group">
         <label for="">Créditos</label><br>

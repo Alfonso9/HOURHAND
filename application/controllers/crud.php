@@ -113,6 +113,25 @@ class Crud extends CI_Controller {
 		$this->load->view('EE/seccionEE_view', $this->data);
 		
 	}
+    function actualizarEE()
+	{
+		$data = array(	'nrcEE' => $this->input->post('nrc'),
+						'codigoCarr' => $this->input->post('carrera'),
+						'nombEE' => $this->input->post('nombre'),
+						'periodEE' => $this->input->post('periodo'),
+						'areaEE' => $this->input->post('area'),
+						'tipoEE' => $this->input->post('tipo'),
+						'hrsteoriaEE' => $this->input->post('hrsT'),
+						'hrspractEE' => $this->input->post('hrsP'),
+						'creditEE' => $this->input->post('creditos')
+						);
+                $id = $this->input->post('nrc');
+                $id2=  $this->input->post('carrera');
+		$this->crud_model->updateEE($id, $data);
+		$this->data['query'] = $this->crud_model->getNombreCarrEE($id2);
+		$this->load->view('EE/seccionEE_view', $this->data);
+		
+	}    
 
     function getEE()
 	{
@@ -148,4 +167,5 @@ class Crud extends CI_Controller {
 		$this->data['query'] = $this->crud_model->getNombreEE();
 		$this->load->view('EE/seccionEE_view', $this->data);
 	}
+        
 }

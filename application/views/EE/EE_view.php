@@ -19,12 +19,12 @@
 				</div>
 				<div class="form-group" >
 					<label for="">NRC</label><br>
-					<input type="text" id="nrc"	
+                                        <input type="text" id="nrc" name="nrc"	
 					pattern="[0-9]{5}" placeholder="Ejemplo: 12345" title="Deben ser 5 caracteres">
 				</div>
 				<div class="form-group">
 					<label for="">Nombre</label><br>
-					<input type="text" id="nombre" 
+                                        <input type="text" id="nombre" name="nombre" 
 					pattern="[A-ZÑÁÉÍÓÚ]{1}[a-zñáéíóú\s]+" placeholder="Ejemplo: Logica" title="Primera letra mayúscula. Máximo 50 caracteres">
 				</div>
                 <div class="form-group" >
@@ -162,17 +162,7 @@
 		</div>
 				
 		<div class="col-md-3" id="div-ee">
-			<?php foreach($query as $ee): ?>
-				<article>
-					<a onclick="getEE(<?php echo htmlspecialchars(json_encode($ee->nrcEE)); ?>)">
-						<?php echo $ee->nombEE; ?>
-					</a>
-                                    <div>
-						<a onclick="editEE(<?php echo htmlspecialchars(json_encode($ee->nrcEE)); ?>)" class="glyphicon glyphicon-pencil"></a>
-						<a onclick="delEE(<?php echo htmlspecialchars(json_encode($ee->nrcEE)); ?>)" class="glyphicon glyphicon-remove"></a>
-					</div>
-                </article>        
-			<?php endforeach; ?>
+			
 		</div>
 		<div class="col-md-3" id="div-infoEE"></div>
 		

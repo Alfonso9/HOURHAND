@@ -80,6 +80,11 @@ class Crud_model extends CI_Model
 	{
 		$this->db->insert('ee', $data);
 	}
+        public function updateEE($id, $data)
+	{
+		$this->db->where('nrcEE', $id);
+		$this->db->update('ee', $data);
+	}
         
     public function getCarreraEE($id)
 	{
@@ -99,9 +104,10 @@ class Crud_model extends CI_Model
     public function getNombreCarrEE($id)
 	{
 		$this->db->select('nrcEE, nombEE');
+                $this->db->where('codigoCarr', $id);
 		$query = $this->db->get('ee');
 		return $query->result();
-    }
+        }
 
     public function delEE($id)
 	{
