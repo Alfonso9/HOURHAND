@@ -67,6 +67,7 @@ class Crud_model extends CI_Model
 		return $query->result();
 	}
 
+<<<<<<< HEAD
 	/**
 	 * getCarreras
 	 *
@@ -124,10 +125,51 @@ class Crud_model extends CI_Model
 		$this->db->select('hrEHorario, hrSHorario');
 		$this->db->where('numeroAula', $id);
 		$query = $this->db->get('horario');
+=======
+
+	public function createAula($data)
+	{
+		$this->db->insert('aula', $data);
+	}
+
+	/**
+	 * updateAula
+	 *
+	 * @author Alfonso
+	*/
+	public function updateAula($id, $data)
+	{
+		$this->db->where('numeroAula', $id);
+		$this->db->update('aula', $data);
+	}
+
+	/**
+	 * delAula
+	 *
+	 * @author Alfonso
+	*/
+	public function delAula($id)
+	{
+		$this->db->where('numeroAula', $id); 
+		$this->db->delete('aula');
+	}
+
+	/**
+	 * getAula
+	 *
+	 * @author Alfonso
+	*/
+	public function getAula($id)
+	{
+		$this->db->select('numeroAula, capacidAula');
+		$this->db->where('numeroAula', $id); 
+		$query = $this->db->get('aula');
+>>>>>>> remotes/origin/Andrea
 		return $query->row();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * setMovimiento
 	 *
 	 * @author Alfonso
@@ -299,3 +341,70 @@ class Crud_model extends CI_Model
 		}	
 	}
 }
+=======
+	 * getNombreAula
+	 *
+	 * @author Alfonso
+	*/
+	public function getNombreAula()
+	{
+		$this->db->select('numeroAula');
+		$query = $this->db->get('aula');
+		return $query->result();
+	}
+
+
+	public function createMaestro($data)
+	{
+		$this->db->insert('maestro', $data);
+	}
+
+	/**
+	 * updateMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function updateMaestro($id, $data)
+	{
+		$this->db->where('numMtro', $id);
+		$this->db->update('maestro', $data);
+	}
+
+	/**
+	 * delMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function delMaestro($id)
+	{
+		$this->db->where('numMtro', $id); 
+		$this->db->delete('maestro');
+	}
+
+	/**
+	 * getMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function getMaestro($id)
+	{
+		$this->db->select('numMtro, nombMtro, tipoMtro, horasMtro');
+		$this->db->where('numMtro', $id); 
+		$query = $this->db->get('maestro');
+		return $query->row();
+	}
+
+	/**
+	 * getNombreCarrera
+	 *
+	 * @author Alfonso
+	*/
+	public function getNombreMaestro()
+	{
+		$this->db->select('numMtro, nombMtro');
+		$query = $this->db->get('maestro');
+		return $query->result();
+	}
+
+}
+>>>>>>> remotes/origin/Andrea
