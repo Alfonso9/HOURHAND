@@ -67,7 +67,6 @@ class Crud_model extends CI_Model
 		return $query->result();
 	}
 
-<<<<<<< HEAD
 	/**
 	 * getCarreras
 	 *
@@ -125,7 +124,8 @@ class Crud_model extends CI_Model
 		$this->db->select('hrEHorario, hrSHorario');
 		$this->db->where('numeroAula', $id);
 		$query = $this->db->get('horario');
-=======
+		return $query->row();
+	}
 
 	public function createAula($data)
 	{
@@ -164,12 +164,10 @@ class Crud_model extends CI_Model
 		$this->db->select('numeroAula, capacidAula');
 		$this->db->where('numeroAula', $id); 
 		$query = $this->db->get('aula');
->>>>>>> remotes/origin/Andrea
 		return $query->row();
 	}
 
 	/**
-<<<<<<< HEAD
 	 * setMovimiento
 	 *
 	 * @author Alfonso
@@ -340,8 +338,8 @@ class Crud_model extends CI_Model
 			return 0; 
 		}	
 	}
-}
-=======
+
+	/*
 	 * getNombreAula
 	 *
 	 * @author Alfonso
@@ -407,4 +405,3 @@ class Crud_model extends CI_Model
 	}
 
 }
->>>>>>> remotes/origin/Andrea

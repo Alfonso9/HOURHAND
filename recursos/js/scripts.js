@@ -8,6 +8,8 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
+/**************************************************** CARRERAS **************************************************************/
+
 function Carreras()
 {
 	$.ajax
@@ -127,37 +129,28 @@ function delCarrera(id)
                         }
             });
 }
+/**************************************************** CARRERAS **************************************************************/
 
-<<<<<<< HEAD
+
+/**************************************************** HORARIOS **************************************************************/
+
 /* Nombre: getPaginaHorario
    Autor: Alfonso
    Descripcion: Envia solicitud de la 
    página de horario al controlador crud.php
 */
 function getPaginaHorario()
-=======
-/////////////////////////AULAS///////////////////////////////
-function Aulas()
->>>>>>> remotes/origin/Andrea
 {
     $.ajax
             ({
                 type: "POST",
-<<<<<<< HEAD
-                url: "crud/paginaHorario",
-=======
-                url: "crud/paginaAulas",
->>>>>>> remotes/origin/Andrea
-                success: function(jso)
+                 url: "crud/paginaHorario",
+                 success: function(jso)
                         {
                             try
                             {     
                                 $("#wrapper").toggleClass("toggled");
-<<<<<<< HEAD
-                                $("#page-content-wrapper").html(jso);                                
-=======
-                                $("#page-content-wrapper").html(jso);                                 
->>>>>>> remotes/origin/Andrea
+                                $("#page-content-wrapper").html(jso);
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -165,36 +158,27 @@ function Aulas()
                         },
                 error:  function()
                         {
-<<<<<<< HEAD
                             alert('Error while resquest..');
-=======
-                            alert('Error while resquest.. HOLLLL');
->>>>>>> remotes/origin/Andrea
                         }
             });
 }
 
-<<<<<<< HEAD
 /* Nombre: verHorario
    Autor: Alfonso
    Descripcion: Envia solicitud de la 
    página de horario al controlador crud.php
 */
 function verHorario(id)
-=======
-function getAula(id)
->>>>>>> remotes/origin/Andrea
 {
     $.ajax
             ({
                 type: "POST",
-<<<<<<< HEAD
-                url: "crud/seccionHorario",
+                 url: "crud/seccionHorario",
                 data: {'numeroaula':id},
                 success: function(jso)
                         {
                             try
-                            {                                      
+                            {              
                                 $("nav > ul > li").removeClass('active');
                                 $("#"+id).addClass('active');                            
                                 if (jso.localeCompare('-1') < 0) 
@@ -206,16 +190,7 @@ function getAula(id)
                                 {
                                     alert("El aula no tiene horario establecido");
                                 };
-=======
-                url: "crud/getAula",
-                data: {'id':id},
-                success: function(jso)
-                        {
-                            try
-                            {     
-                                $("#div-infoAula").html(jso);                                
->>>>>>> remotes/origin/Andrea
-                            }catch(e)
+                             }catch(e)
                             {
                                 alert('Exception while resquest...');
                             }                       
@@ -227,7 +202,6 @@ function getAula(id)
             });
 }
 
-<<<<<<< HEAD
 /* Nombre: llenarHorario
    Autor: Alfonso
    Descripcion: Realiza una solcitud al controlador CRUD para
@@ -291,32 +265,18 @@ function getAula(id)
                                     nrc = '';
                                     var posicAsig = '';
                                 });
-=======
-function editAula(numero)
-{
-    $.ajax
-            ({
-                type: "POST",
-                url: "crud/editarAula",
-                data: {'numero':numero},
-                success: function(jso)
-                        {
-                            try
-                            {     
-                                $("#div-form-aulas").html(jso);                                
->>>>>>> remotes/origin/Andrea
-                            }catch(e)
-                            {
-                                alert('Exception while resquest...');
-                            }                       
-                        },
-                error:  function()
-                        {
-                            alert('Error while resquest..');
-                        }
+                             }catch(e)
+                                            {
+                                                alert('Exception while resquest...');
+                                            }                       
+                                        },
+                                error:  function()
+                                        {
+                                            alert('Error while resquest..');
+                                        }
             });
-<<<<<<< HEAD
-    };
+
+}
 
 /* Nombre: verEE
    Autor: Alfonso
@@ -324,30 +284,18 @@ function editAula(numero)
    secciòn de horario al controlador crud.php
 */
 function verEE(id)
-=======
-}
-
-function formCrearAula()
->>>>>>> remotes/origin/Andrea
 {
     $.ajax
             ({
                 type: "POST",
-<<<<<<< HEAD
                 url: "crud/seccionEE",
                 data: {'codigo': id},
-=======
-                url: "crud/formcrearaula",
->>>>>>> remotes/origin/Andrea
                 success: function(jso)
                         {
                             try
-                            {     
-<<<<<<< HEAD
-                                $("#EE").html(jso);                                 
-=======
-                                $("#div-form-aulas").html(jso);                                
->>>>>>> remotes/origin/Andrea
+                            {
+                                $("#EE").html(jso); 
+                                $("#div-form-aulas").html(jso);
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -360,7 +308,7 @@ function formCrearAula()
             });
 }
 
-<<<<<<< HEAD
+
 /* Nombre: allowDrop
    Autor: Alfonso
    Descripcion: Detiene el envío al arrastrar
@@ -459,21 +407,7 @@ function drop(ev)
                                     //alert(ele.innerHTML);
                                     document.getElementById(nrc).appendChild(span);  
                                     document.getElementById(nrc).appendChild(ele);    
-                                };                 
-=======
-function delAula(id)
-{
-    $.ajax
-            ({
-                type: "POST",
-                url: "crud/eliminarAula",
-                data: {'id':id},
-                success: function(jso)
-                        {
-                            try
-                            {     
-                                $("#div-aulas").html(jso);
-                                window.formCrearAula();                                
+                                };     
                             }catch(e)
                             {
                                 alert('Exception while resquest...');
@@ -481,33 +415,6 @@ function delAula(id)
                         },
                 error:  function()
                         {
-                            alert('Error while resquest..');
-                        }
-            });
-}
-
-
-function Maestros()
-{
-    $.ajax
-            ({
-                type: "POST",
-                url: "crud/paginaMaestros",
-                success: function(jso)
-                        {
-                            try
-                            {     
-                                $("#wrapper").toggleClass("toggled");
-                                $("#page-content-wrapper").html(jso);                                 
->>>>>>> remotes/origin/Andrea
-                            }catch(e)
-                            {
-                                alert('Exception while resquest...');
-                            }                       
-                        },
-                error:  function()
-                        {
-<<<<<<< HEAD
                             alert('Error while resquest drop..');
                         }
             });
@@ -586,59 +493,22 @@ function EEdispon(hrs, e, nrc)
     });
 }
 
+
 /* Nombre: borrarMovimiento 
    Autor: Alfonso
    Descripcion: Borra el movimiento seleccionado
 */
 function borrarMovimiento(id, tag) 
-=======
-                            alert('Error while resquest..');
-                        }
-            });
-}
-
-function getMaestro(id)
 {
     $.ajax
             ({
                 type: "POST",
-                url: "crud/getMaestro",
-                data: {'id':id},
-                success: function(jso)
-                        {
-                            try
-                            {     
-                                $("#div-infoMaestro").html(jso);                                
-                            }catch(e)
-                            {
-                                alert('Exception while resquest...');
-                            }                       
-                        },
-                error:  function()
-                        {
-                            alert('Error while resquest..');
-                        }
-            });
-}
-
-function editMaestro(numero)
->>>>>>> remotes/origin/Andrea
-{
-    $.ajax
-            ({
-                type: "POST",
-<<<<<<< HEAD
                 url: "crud/borrarMovimiento",
                 data: {"id":id},
-=======
-                url: "crud/editarMaestro",
-                data: {'numero':numero},
->>>>>>> remotes/origin/Andrea
                 success: function(jso)
                         {
                             try
-                            {     
-<<<<<<< HEAD
+                            { 
                                 var bandera = parseInt(JSON.parse(jso));
                                 if (bandera == 1) 
                                 {
@@ -656,22 +526,19 @@ function editMaestro(numero)
                                     var clic = document.getElementById(nrcnumEE[0]);
                                     clic.click();
                                 }
-=======
-                                $("#div-form-maestros").html(jso);                                
->>>>>>> remotes/origin/Andrea
-                            }catch(e)
-                            {
-                                alert('Exception while resquest...');
-                            }                       
-                        },
-                error:  function()
+                                }catch(e)
                         {
-                            alert('Error while resquest..');
-                        }
-            });
+                            alert('Exception while resquest...');
+                        }                       
+                    },
+            error:  function()
+                    {
+                        alert('Error while resquest..');
+                    }
+        });
 }
 
-<<<<<<< HEAD
+
 /* Nombre: mostrarAlerta 
    Autor: Alfonso
    Descripcion: Muestra la alerta en la pantalla
@@ -709,7 +576,222 @@ function quitarAlerta(alerta)
     {   
         list.removeChild(list.firstChild);
     }
-=======
+}
+/**************************************************** HORARIOS **************************************************************/
+
+/**************************************************** AULAS **************************************************************/
+function Aulas()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaAulas",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest.. HOLLLL');
+                        }
+            });
+}
+
+
+function getAula(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/getAula",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-infoAula").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+
+
+
+
+function editAula(numero)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/editarAula",
+                data: {'numero':numero},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-aulas").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+
+}               
+
+
+function formCrearAula()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/formcrearaula",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-aulas").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+
+
+
+function delAula(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/eliminarAula",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-aulas").html(jso);
+                                window.formCrearAula();                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+/**************************************************** AULAs **************************************************************/
+
+/**************************************************** MAESTROS **************************************************************/
+function Maestros()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaMaestros",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}   
+
+function getMaestro(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/getMaestro",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-infoMaestro").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+
+
+
+
+
+function editMaestro(numero)
+{
+    $.ajax
+            ({
+                type: "POST",
+
+                url: "crud/editarMaestro",
+                data: {'numero':numero},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-maestros").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+
+
 function formCrearMaestro()
 {
     $.ajax
@@ -756,5 +838,6 @@ function delMaestro(id)
                             alert('Error while resquest..');
                         }
             });
->>>>>>> remotes/origin/Andrea
 }
+
+/**************************************************** MAESTROS **************************************************************/
