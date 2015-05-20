@@ -156,30 +156,6 @@ function delCarrera(id)
 }
 
 
-//Experiencias educativas
-function EE()
-{
-	$.ajax
-            ({
-                type: "POST",
-                url: "crud/paginaEE",
-                success: function(jso)
-                        {
-                            try
-                            {     
-                                $("#wrapper").toggleClass("toggled");
-                                $("#page-content-wrapper").html(jso);                                 
-                            }catch(e)
-                            {
-                                alert('Exception while resquest...');
-                            }                       
-                        },
-                error:  function()
-                        {
-                            alert('Error while resquest..');
-                        }
-            });
-}
 
 function getEE(id)
 {
@@ -994,4 +970,54 @@ function delMaestro(id)
             });
 }
 
+
 /**************************************************** MAESTROS **************************************************************/
+
+/**************************************************** EE **************************************************************/
+function EE()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaEE",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function formCrearEE()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/formcrearEE",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#div-form-ee").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+/**************************************************** EE **************************************************************/

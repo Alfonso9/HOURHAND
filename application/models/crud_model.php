@@ -405,7 +405,7 @@ class Crud_model extends CI_Model
 	}
 
         //funciones Experiencias Educativas
-    public function getEE($id)
+    public function getEEE($id)
 	{
 
 		$this->db->select('nrcEE, codigoCarr, nombEE, periodEE, areaEE, tipoEE, hrsteoriaEE, hrspractEE, creditEE');

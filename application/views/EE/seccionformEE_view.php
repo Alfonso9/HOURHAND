@@ -180,9 +180,9 @@
                 success: function(jso)
                         {
                             try
-                            {                                                                      
+                            {   
                                 $("#div-ee").html(jso);  
-                                document.getElementById("formCrearEE").reset();                     
+                                formCrearEE();                 
                             }catch(e)
                             {
                                 alert('Exception while resquest...');

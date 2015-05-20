@@ -379,7 +379,7 @@ class Crud extends CI_Controller {
     function getEE()
 	{
 		$id = $this->input->post('id');
-		$this->data['ee'] = $this->crud_model->getEE($id);
+		$this->data['ee'] = $this->crud_model->getEEE($id);
 		$this->load->view('EE/seccioninfoEE_view', $this->data);
 	}
 
@@ -394,7 +394,7 @@ class Crud extends CI_Controller {
     function editarEE()
 	{
 		$id = $this->input->post('id');
-		$this->data['ee'] = $this->crud_model->getEE($id);
+		$this->data['ee'] = $this->crud_model->getEEE($id);
         $this->data['query2'] = $this->crud_model->comboCarrera();
         $this->data['arreglo'] = array("Básica General", "Iniciación a la Diciplina", "Diciplinaria", "Terminal");
         $this->data['arreglo2'] = array("Obligatoria", "Optativa");
@@ -411,5 +411,12 @@ class Crud extends CI_Controller {
 		$this->load->view('EE/seccionEE_view', $this->data);
 	}
         
+    function formcrearEE()
+	{
+		$this->data['query'] = $this->crud_model->getNombreEE();
+        $this->data['query2'] = $this->crud_model->comboCarrera();
+        $this->data['query3']= $this->crud_model->getNombreCarr();
+		$this->load->view('EE/seccionformCrearEE_view', $this->data);
+	}
 }
 
