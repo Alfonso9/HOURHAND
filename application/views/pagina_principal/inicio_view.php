@@ -4,7 +4,7 @@
         	<img class="imgcareras" src="recursos/images/carreras.jpg" class="img-responsive">
         </div>
         <div class="col-lg-6 grid6 colorbloque">
-        	<a href="Carreras()"><h1>CARRERAS</h1></a>
+        	<a onclick="Carreras()"><h1>CARRERAS</h1></a>
         </div>
     </div>
     
@@ -16,7 +16,7 @@
     		<img class="imgmaestros" src="recursos/images/maestros.jpg" class="img-responsive">
     	</div>
     	<div class="col-lg-4 grid4 colorbloque">
-    		<a href="Aulas()"><h1>AULAS</h1></a>
+    		<a onclick="Aulas()"><h1>AULAS</h1></a>
     	</div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
     		<img class="imgmaterias" src="recursos/images/materias.jpg" class="img-responsive">
     	</div>
     	<div class="col-lg-4 grid4 colorbloque">
-    		<a href="Maestros()"><h1>MAESTROS</h1></a>
+    		<a onclick="Maestros()"><h1>MAESTROS</h1></a>
     	</div>
     	<div class="col-lg-4">
     		<img class="imgaulas" src="recursos/images/aulas.jpg" class="img-responsive">
@@ -36,7 +36,7 @@
             <img class="imghorarios" src="recursos/images/horarios.jpg" class="img-responsive">
         </div>
         <div class="col-lg-3 grid3 colorbloque">
-            <a href="getPaginaHorario()"><h1>HORARIOS</h1></a>
+            <a onclick="getPaginaHorario()"><h1>HORARIOS</h1></a>
         </div>
         <div class="col-lg-3">
             <img class="imgreportes" src="recursos/images/reportes.jpg" class="img-responsive">

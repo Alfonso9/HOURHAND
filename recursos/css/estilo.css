@@ -227,3 +227,80 @@ div.alto
 {
     margin-top: -6%;
 }
+
+/*Termina estilo de pagina principal*/
+
+/*Inicia estilo de CARRERAS*/
+
+.paginacarrera{
+     margin-top: -6.5%;
+}
+
+.grid8carrera
+{
+    margin-top: -20px;
+}
+
+.titulocarrera
+{
+    background-color: #23527C;
+    color: white;
+    height: 100px;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30pt;
+    font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+}
+
+.nombrecarreras
+{
+    background-color: #21CC6D;  
+    color: white; 
+    padding-top: 25px;
+    padding-left: 50px;
+    font-size: 16pt;
+    padding-bottom: 25px;
+}
+
+.colornombrecarreras
+{
+    color: white;
+    padding-left: 50px;   
+}
+
+.colornombrecarreras a
+{
+    color: white;
+}
+
+.infocarreras
+{
+    background-color: white;
+    font-size: 16px;
+}
+
+.module {
+    background-image: url("../images/carreras/carrera.jpg");
+    background-size: cover;
+    width: 452px;
+    height: 200px;
+    margin-left: -15px;
+    position: relative;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.mid h2 
+{
+  color: white;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+
+
+  font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+  font-weight: lighter;
+  font-style: normal;
+  line-height: 1.14286;
+}

@@ -1,7 +1,7 @@
-<div class="row">
-	<div class="col-md-8">
-		<h2>CARRERAS</h2>
-		<br><br><br>
+<div class="row paginacarrera">
+	<div class="col-md-8 grid8carrera">
+		<h2 class="titulocarrera">CARRERAS</h2>
+		
 		<script src="<?= base_url(); ?>recursos/js/jquery-1.10.2.js"></script>
 		<div class="col-md-6" id="div-form-carreras">
 			<div id="alertaFormCarreras"></div>
@@ -59,9 +59,9 @@
 				
 			</script>
 		</div>
-		<div class="col-md-6" id="div-carreras">
+		<div class="col-md-6 nombrecarreras" id="div-carreras">
 			<?php foreach($query as $carrera): ?>
-				<article>
+				<article class="colornombrecarreras">
 					<a onclick="getCarrera(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
 						<?php echo $carrera->nombreCarr; ?>
 					</a>
@@ -73,7 +73,5 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
-	<div class="col-md-4" id="div-infoCarrera"></div>
+	<div class="col-md-4 infocarreras" id="div-infoCarrera"></div>
 </div>
-
-
