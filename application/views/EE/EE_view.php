@@ -136,8 +136,8 @@
 			                        {
 			                            try
 			                            {                                          	                           
-			                                alert(jso); 
-			                                $("#div-ee").html(jso);                       
+			                                $("#div-ee").html(jso);     
+			                                document.getElementById("formCrearEE").reset(); 			                           
 			                            }catch(e)
 			                            {
 			                                alert('Exception while resquest...');

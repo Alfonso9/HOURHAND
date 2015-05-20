@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
         <label for="">Nombre</label><br>
-        <input  type="text" id="nombreEE" value="<?php echo $ee->nombEE; ?>"
+        <input  type="text" id="nombre" value="<?php echo $ee->nombEE; ?>"
             pattern="[A-ZÑÁÉÍÓÚ]{1}[a-zñáéíóú\s]+" placeholder="Ejemplo: Logica" 
             title="Primera letra mayúscula. Máximo 50 caracteres">
     </div>
@@ -58,7 +58,7 @@
             <option value="0">Seleccione una opción...</option>
             <?php $i=0 ;
                     foreach ($arreglo as $areas ):
-                        $i++;
+                        $i++;                      
                         if (($ee->areaEE) == ($areas)){  
                         ?>
                             <option id="area<?php echo $i; ?>" onclick="selec(area<?php echo $i; ?>)"
@@ -181,8 +181,8 @@
                         {
                             try
                             {                                                                      
-                                alert(jso); 
-                                $("#div-ee").html(jso);                       
+                                $("#div-ee").html(jso);  
+                                document.getElementById("formCrearEE").reset();                     
                             }catch(e)
                             {
                                 alert('Exception while resquest...');

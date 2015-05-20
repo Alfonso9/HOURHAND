@@ -80,7 +80,8 @@ class Crud_model extends CI_Model
 	{
 		$this->db->insert('ee', $data);
 	}
-        public function updateEE($id, $data)
+    
+    public function updateEE($id, $data)
 	{
 		$this->db->where('nrcEE', $id);
 		$this->db->update('ee', $data);
