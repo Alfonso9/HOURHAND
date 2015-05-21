@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a onclick="verMisConv()">
+                    <a onclick="EE()">
                       <i class="glyphicon glyphicon-file"></i>
                       <span>MATERIAS</span>
                     </a>
@@ -61,3 +61,4 @@
         <!-- Sidebar Wrapper-->
         <!--Termina Toggle Perfil -->
 </header>
+
