@@ -1,10 +1,9 @@
-<div class="row">
-	<div class="col-md-8">
-		<h2>AULAS</h2>
-		<br><br><br>
+<div class="row paginaAula">
+	<div class="col-md-8 grid8Aula">
+		<h2 class="tituloAula">AULAS</h2>
 		<script src="<?= base_url(); ?>recursos/js/jquery-1.10.2.js"></script>
 		<div class="col-md-6" id="div-form-aulas">
-			<form id="formAula" action="crud/crearAula">
+			<form class="formularioAula" id="formAula" action="crud/crearAula">
 				<span></span>
 				<div class="form-group" >
 					<label for="">Número</label><br>
@@ -14,7 +13,7 @@
 					<label for="">Capacidad</label><br>
 					<input type="text" id="capacidad" name="capacidad" placeholder="Capacidad">
 				</div>
-				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+				<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 			</form>
 			<script>
 				$( "#formAula" ).submit(function( event ) {
@@ -48,9 +47,9 @@
 				});
 			</script>
 		</div>
-		<div class="col-md-6" id="div-aulas">
+		<div class="col-md-6 nombreAulas" id="div-aulas">
 			<?php foreach($query as $aula): ?>
-				<article>
+				<article class="colornombreAulas">
 					<a onclick="getAula(<?php echo htmlspecialchars(json_encode($aula->numeroAula)); ?>)">
 						<?php echo $aula->numeroAula; ?>
 					</a>
@@ -62,7 +61,7 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
-	<div class="col-md-4" id="div-infoAula"></div>
+	<div class="col-md-4 infoAulas" id="div-infoAula"></div>
 </div>
 
 

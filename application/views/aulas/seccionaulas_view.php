@@ -1,5 +1,5 @@
 <?php foreach($query as $aula): ?>
-	<article>
+	<article class="colornombreAulas">
 		<a onclick="getAula(<?php echo htmlspecialchars(json_encode($aula->numeroAula)); ?>)">
 			<?php echo $aula->numeroAula; ?>
 		</a>
