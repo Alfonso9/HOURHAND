@@ -1021,3 +1021,79 @@ function formCrearEE()
             });
 }
 /**************************************************** EE **************************************************************/
+
+/**************************************************** Reportes **************************************************************/
+function Reportes()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/Reportes",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#wrapper").toggleClass("toggled");
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function crearReporte(tipo)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/crearReporte",
+                data: {'tipo':tipo},
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#info_report").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+function llenarReporte(id)
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/llenarReporte",
+                data: {'id':id},
+                success: function(jso)
+                        {
+                            try
+                            {   
+                                alert(jso);  
+                                $("#area_report").html(jso);                                
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
+/**************************************************** Reportes **************************************************************/

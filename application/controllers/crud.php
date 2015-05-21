@@ -418,5 +418,36 @@ class Crud extends CI_Controller {
         $this->data['query3']= $this->crud_model->getNombreCarr();
 		$this->load->view('EE/seccionformCrearEE_view', $this->data);
 	}
+
+	/* Nombre: Reportes
+	   Autor: Alfonso
+	   Descripcion: Envía la pagina de Reportes
+	*/
+	function Reportes()
+	{
+		$this->load->view('reportes/paginaReportes_view');
+	}
+
+	/* Nombre: crearReporte
+	   Autor: Alfonso
+	   Descripcion: Realiza una consulta para el reporte
+	   y envia la vista de Info
+	*/
+	function crearReporte()
+	{
+		$tipo = $this->input->post('tipo');
+		$this->data['query'] = $this->crud_model->getTipo($tipo);
+		if (is_null($this->data['query']))   {
+			return 0;
+		}
+		$this->load->view('reportes/info_report_view', $this->data);
+	}
+
+
+	function llenarReporte()
+	{
+		
+		$this->load->view('reportes/pdfReporte_view');
+	}
 }
 

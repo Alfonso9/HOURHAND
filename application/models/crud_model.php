@@ -463,4 +463,35 @@ class Crud_model extends CI_Model
 			return $query2->result();
 		}
 	}
+
+	/**
+	 * getTipo
+	 *
+	 * @author Alfonso
+	 *
+	 * Description: Devuelve todas los horarios de la tabla horario,
+	 * que coincidan con el numero de aula
+	*/
+	public function getTipo($tipo)
+	{
+		switch ($tipo) {
+			case 'aulas':
+				$this->db->select('numeroAula As nombre, numeroAula As id');				
+				$query = $this->db->get('aula');
+				return $query->result();
+				break;
+			case 'maestros':
+				$this->db->select('nombMtro As nombre, numMtro As id');				
+				$query = $this->db->get('maestro');
+				return $query->result();
+				break;
+			
+			case 'oferta':	
+				return null;			
+				break;
+			
+			default:
+				break;
+		}
+	}
 }
