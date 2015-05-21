@@ -1,5 +1,5 @@
 <div id="alertaFormCarreras"></div>
-<form id="formCarrera" action="crud/crearCarrera">
+<form class="formularioCarrera" id="formCarrera" action="crud/crearCarrera">
 	<span></span>
 	<div class="form-group" >
 		<label for="">Código</label><br>
@@ -13,7 +13,7 @@
 		<label for="">Créditos</label><br>
 		<input type="text" id="creditos" pattern="[0-9]{3}" title="Debe ser de 3 caracteres" placeholder="Ejemplo: 380">
 	</div>
-	<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+	<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 </form>
 
 

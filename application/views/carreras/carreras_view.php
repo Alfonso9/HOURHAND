@@ -1,11 +1,11 @@
-<div class="row paginacarrera">
-	<div class="col-md-8 grid8carrera">
-		<h2 class="titulocarrera">CARRERAS</h2>
+<div class="row paginaCarrera">
+	<div class="col-md-8 grid8Carrera">
+		<h2 class="tituloCarrera">CARRERAS</h2>
 		
 		<script src="<?= base_url(); ?>recursos/js/jquery-1.10.2.js"></script>
 		<div class="col-md-6" id="div-form-carreras">
 			<div id="alertaFormCarreras"></div>
-			<form id="formCarrera" action="crud/crearCarrera">
+			<form class="formularioCarrera" id="formCarrera" action="crud/crearCarrera">
 				<span></span>
 				<div class="form-group" >
 					<label for="">Código</label><br>
@@ -19,7 +19,7 @@
 					<label for="">Créditos</label><br>
 					<input type="text" id="creditos" pattern="[0-9]{3}" title="Debe ser de 3 caracteres" placeholder="Ejemplo: 380">
 				</div>
-				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+				<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 			</form>
 			<script>
 				$( "#formCarrera" ).submit(function( event ) {
@@ -59,9 +59,9 @@
 				
 			</script>
 		</div>
-		<div class="col-md-6 nombrecarreras" id="div-carreras">
+		<div class="col-md-6 nombreCarreras" id="div-carreras">
 			<?php foreach($query as $carrera): ?>
-				<article class="colornombrecarreras">
+				<article class="colornombreCarreras">
 					<a onclick="getCarrera(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
 						<?php echo $carrera->nombreCarr; ?>
 					</a>
@@ -73,5 +73,5 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
-	<div class="col-md-4 infocarreras" id="div-infoCarrera"></div>
+	<div class="col-md-4 infoCarreras" id="div-infoCarrera"></div>
 </div>

@@ -1,5 +1,5 @@
 <?php foreach($query as $carrera): ?>
-	<article>
+	<article class="colornombreCarreras">
 		<a onclick="getCarrera(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
 			<?php echo $carrera->nombreCarr; ?>
 		</a>

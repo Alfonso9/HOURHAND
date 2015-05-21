@@ -1,4 +1,4 @@
-<form id="formAula" action="crud/actualizarAula">
+<form class="formularioAula" id="formAula" action="crud/actualizarAula">
 	<div class="form-group" >
 		<label for="">Número</label><br>
 		<input type="text" id="numero" name="numero" 
@@ -11,7 +11,7 @@
 				placeholder="Capacidad" 
 				value="<?php echo $aula->capacidAula; ?>">
 	</div>
-	<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+	<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 </form>
 
 <script>

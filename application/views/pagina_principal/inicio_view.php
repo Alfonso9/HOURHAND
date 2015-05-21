@@ -10,7 +10,7 @@
     
     <div class="row">
     	<div class="col-lg-4 grid4 colorbloque">
-    		<a href="verMisConv()"><h1>MATERIAS</h1></a>
+    		<a href="EE()"><h1>MATERIAS</h1></a>
     	</div>
     	<div class="col-lg-4">
     		<img class="imgmaestros" src="recursos/images/maestros.jpg" class="img-responsive">
@@ -42,7 +42,7 @@
             <img class="imgreportes" src="recursos/images/reportes.jpg" class="img-responsive">
         </div>
         <div class="col-lg-3 grid3 colorbloque">
-            <a href=""><h1>REPORTES</h1></a>
+            <a onclick="#"><h1>REPORTES</h1></a>
         </div>
     </div>
 </div>
