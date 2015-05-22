@@ -10,11 +10,7 @@
     
     <div class="row">
     	<div class="col-lg-4 grid4 colorbloque">
-<<<<<<< HEAD
-    		<a onclick="EE()"><h1>MATERIAS</h1></a>
-=======
     		<a href="EEPrinc()"><h1>MATERIAS</h1></a>
->>>>>>> 0f6837fe0e28b5108a970bd07e7639f5caaaec59
     	</div>
     	<div class="col-lg-4">
     		<img class="imgmaestros" src="recursos/images/maestros.jpg" class="img-responsive">
@@ -46,11 +42,7 @@
             <img class="imgreportes" src="recursos/images/reportes.jpg" class="img-responsive">
         </div>
         <div class="col-lg-3 grid3 colorbloque">
-<<<<<<< HEAD
-            <a onclick="Reportes()"><h1>REPORTES</h1></a>
-=======
             <a onclick="ReportesPrinc()"><h1>REPORTES</h1></a>
->>>>>>> 0f6837fe0e28b5108a970bd07e7639f5caaaec59
         </div>
     </div>
 </div>
