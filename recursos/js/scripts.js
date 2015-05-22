@@ -34,6 +34,29 @@ function paginaInicio()
 
 /**************************************************** CARRERAS **************************************************************/
 
+function carrerasPrinc()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaCarreras",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
 function Carreras()
 {
 	$.ajax
@@ -263,6 +286,33 @@ function delEE(id)
 
 
 /**************************************************** HORARIOS **************************************************************/
+/* Nombre: PaginaHorarioPrinc
+   Autor: Alfonso
+   Descripcion: Envia solicitud de la 
+   página de horario al controlador crud.php
+*/
+function PaginaHorarioPrinc()
+{
+    $.ajax
+            ({
+                type: "POST",
+                 url: "crud/paginaHorario",
+                 success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#page-content-wrapper").html(jso);
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
 
 /* Nombre: getPaginaHorario
    Autor: Alfonso
@@ -710,6 +760,29 @@ function quitarAlerta(alerta)
 /**************************************************** HORARIOS **************************************************************/
 
 /**************************************************** AULAS **************************************************************/
+function AulasPrinc()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaAulas",
+                success: function(jso)
+                        {
+                            try
+                            {                                    
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest.. HOLLLL');
+                        }
+            });
+}
+
 function Aulas()
 {
     $.ajax
@@ -842,6 +915,29 @@ function delAula(id)
 /**************************************************** AULAs **************************************************************/
 
 /**************************************************** MAESTROS **************************************************************/
+function MaestrosPrinc()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaMaestros",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+} 
+
 function Maestros()
 {
     $.ajax
@@ -974,6 +1070,29 @@ function delMaestro(id)
 /**************************************************** MAESTROS **************************************************************/
 
 /**************************************************** EE **************************************************************/
+function EEPrinc()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/paginaEE",
+                success: function(jso)
+                        {
+                            try
+                            {                                    
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
 function EE()
 {
     $.ajax
@@ -1023,6 +1142,29 @@ function formCrearEE()
 /**************************************************** EE **************************************************************/
 
 /**************************************************** Reportes **************************************************************/
+function ReportesPrinc()
+{
+    $.ajax
+            ({
+                type: "POST",
+                url: "crud/Reportes",
+                success: function(jso)
+                        {
+                            try
+                            {     
+                                $("#page-content-wrapper").html(jso);                                 
+                            }catch(e)
+                            {
+                                alert('Exception while resquest...');
+                            }                       
+                        },
+                error:  function()
+                        {
+                            alert('Error while resquest..');
+                        }
+            });
+}
+
 function Reportes()
 {
     $.ajax
