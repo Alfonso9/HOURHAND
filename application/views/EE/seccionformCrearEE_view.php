@@ -1,4 +1,4 @@
-<form id="formCrearEE" action="crud/crearEE">
+<form class="formularioCarrera" id="formCrearEE" action="crud/crearEE">
                 <div class="form-group" >
 					<label for="">Carrera</label><br>
                     <select id="carreraEE" name="carreraEE">
@@ -59,7 +59,7 @@
 					<label for="">Horas Prácticas</label><br>
 					<input type="text" id="hrsP" name="hrsP" placeholder="Numero de horas">
 				</div>
-				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+				<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 			</form>
 			<script>
 				function selec(codigo)

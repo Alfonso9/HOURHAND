@@ -1,10 +1,10 @@
-<div class="row">
-	<div class="col-md-12">
-		<h2>MATERIAS</h2>
+<div class="row paginaMateria">
+	<div class="col-md-12 grid8Materia">
+		<h2 class="tituloMateria">MATERIAS</h2>
 		<br><br><br>
 		<?php echo validation_errors(); ?>
 		<div class="col-md-3" id="div-form-ee">
-			<form id="formCrearEE" action="crud/crearEE">
+			<form class="formularioMateria" id="formCrearEE" action="crud/crearEE">
                 <div class="form-group" >
 					<label for="">Carrera</label><br>
                     <select id="carreraEE" name="carreraEE">
@@ -65,7 +65,7 @@
 					<label for="">Horas Prácticas</label><br>
 					<input type="text" id="hrsP" name="hrsP" placeholder="Numero de horas">
 				</div>
-				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+				<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 			</form>
 			<script>
 				function selec(codigo)
@@ -151,7 +151,7 @@
 				});
 			</script>
 		</div>
-        <div class="col-md-3" id="div-carrerasEE">
+        <div class="col-md-3 nombreMaterias" id="div-carrerasEE">
             <?php foreach($query3 as $carrera): ?>
 				<article>
 					<a onclick="getCarreraEE(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
@@ -161,9 +161,9 @@
 			<?php endforeach; ?>
 		</div>
 				
-		<div class="col-md-3" id="div-ee">
+		<div class="col-md-2" id="div-ee">
 			
 		</div>
-		<div class="col-md-3" id="div-infoEE"></div>
+		<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
 		
 </div>
