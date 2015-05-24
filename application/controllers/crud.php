@@ -40,24 +40,13 @@ class Crud extends CI_Controller {
 
 	function actualizarCarrera()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('codigo', 'código', 'required');
-		$this->form_validation->set_rules('nombre', 'nombre', 'required');
-		$this->form_validation->set_rules('creditos', 'créditos', 'required');
 		$data = array(
 						'nombreCarr' => $this->input->post('nombre'),
 						'creditosCarr' => $this->input->post('creditos') );
 		$id = $this->input->post('codigo');
-
-		if($this->form_validation->run() == true){
-			$this->crud_model->updateCarrera($id, $data);
-	        $this->data['query'] = $this->crud_model->getNombreCarr();
-			$this->load->view('carreras/seccioncarreras_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreCarr();
-			$this->load->view('carreras/seccioncarreras_view', $this->data);	
-    	}
+		$this->crud_model->updateCarrera($id, $data);
+        $this->data['query'] = $this->crud_model->getNombreCarr();
+		$this->load->view('carreras/seccioncarreras_view', $this->data);	
 	}
 
 	function getCarrera()
@@ -95,43 +84,32 @@ class Crud extends CI_Controller {
 
 	function crearAula()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('numero', 'número', 'required');
-		$this->form_validation->set_rules('capacidad', 'capacidad', 'required');
 		$data = array(	'numeroAula' => $this->input->post('numero'),
 						'capacidAula' => $this->input->post('capacidad') );
 
-		if($this->form_validation->run() == true){
+		$existe = $this->crud_model->validaAula($data['numeroAula']);
+		if ($existe == 0) 
+		{	
 			$this->crud_model->createAula($data);
 	        $this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aulas/seccionaulas_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aula/seccionaulas_view', $this->data);	
+			$this->load->view('aulas/seccionaulas_view', $this->data);	
     	}	
+    	elseif ($existe == 1) 
+    	{
+    		echo json_encode($existe);
+    	}
 	}
 
 	function actualizarAula()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('numero', 'número', 'required');
-		$this->form_validation->set_rules('capacidad', 'capacidad', 'required');
 		$data = array(
 						'numeroAula' => $this->input->post('numero'),
 						'capacidAula' => $this->input->post('capacidad') );
 		$id = $this->input->post('numero');
-
-		if($this->form_validation->run() == true){
-			$this->crud_model->updateAula($id, $data);
-	        $this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aulas/seccionaulas_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aulas/seccionaulas_view', $this->data);	
-    	}
-	}
+		$this->crud_model->updateAula($id, $data);
+        $this->data['query'] = $this->crud_model->getNombreAula();
+		$this->load->view('aulas/seccionaulas_view', $this->data);
+   	}
 
 	function getAula()
 	{

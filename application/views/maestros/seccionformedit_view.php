@@ -1,3 +1,4 @@
+<div id="alertaFormMaestros"></div>
 <form id="formMaestro" action="crud/actualizarMaestro">
 	<div class="form-group" >
 		<label for="">Número</label><br>

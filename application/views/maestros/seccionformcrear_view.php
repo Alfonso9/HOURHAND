@@ -49,8 +49,7 @@
 						        success: function(jso)
 						                {
 						                    try
-						                    {             
-						                    	alert(jso);                             	                           						                           
+						                    {                                         	                           						                           
 						                        if (jso.length > 4)
 			                            		{
 			                            			$("#div-maestros").html(jso);

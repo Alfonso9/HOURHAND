@@ -141,6 +141,21 @@ class Crud_model extends CI_Model
 		return $query->row();
 	}
 
+	/**
+	 * validaAula
+	 *
+	 * @author Alfonso
+	 * Description: Valida que no exista la Llave del aula
+	*/
+	public function validaAula($numeroAula)
+	{
+		$existe = $this->db->query("SELECT EXISTS(SELECT * FROM aula 
+													WHERE numeroAula = '".$numeroAula."') AS bool;"
+									);
+		$existe = $existe->row();
+		return $existe->bool;
+	}
+
 	public function createAula($data)
 	{
 		$this->db->insert('aula', $data);
