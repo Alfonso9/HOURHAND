@@ -2,8 +2,8 @@
 	<div class="col-md-12 grid8Materia">
 		<h2 class="tituloMateria">MATERIAS</h2>
 		<br><br><br>
-		<?php echo validation_errors(); ?>
 		<div class="col-md-3" id="div-form-ee">
+			<div id="alertaFormMaterias"></div>
 			<form class="formularioMateria" id="formCrearEE" action="crud/crearEE">
                 <div class="form-group" >
 					<label for="">Carrera</label><br>
@@ -30,7 +30,7 @@
                 <div class="form-group" >
 					<label for="">Periodo</label><br>
                     <select id="periodoEE" name="periodoEE" placeholder="Periodo">
-                        <option>Seleccione una opción..</option>
+                        <option id="">Seleccione una opción..</option>
                         <option id="FEB-JUL" onclick="selec(FEB-JUL)">FEB-JUL</option>
                         <option id="AGO-ENE" onclick="selec(AGO-ENE)">AGO-ENE</option>                                            
                     </select>
@@ -100,6 +100,7 @@
 						    area = "Terminal";
 						    break;
 						default:
+							area = "";
 						    break;
 					}
 					var creditos = $("#creditos").val();
@@ -114,40 +115,56 @@
 						    tipo = "Optativa";
 						    break;
 						default:
+							tipo = "";
 						    break;
 					}
 					var hrsT = $("#hrsT").val();
 					var hrsP = $("#hrsP").val();
-
-				 	$.ajax
-			            ({
-			                type: "POST",
-			                url: $(this).attr("action"),
-			                data: {	'carrera': idCarrera,
-			            			'nrc':nrc,
-			            			'nombre':nombre,
-			            			'periodo':idPeriodo,
-			            			'area':area,
-			            			'creditos':creditos,
-			            			'tipo':tipo,
-			            			'hrsT':hrsT,
-			            			'hrsP':hrsP},
-			                success: function(jso)
-			                        {
-			                            try
-			                            {                                          	                           
-			                                $("#div-ee").html(jso);     
-			                                document.getElementById("formCrearEE").reset(); 			                           
-			                            }catch(e)
-			                            {
-			                                alert('Exception while resquest...');
-			                            }                       
-			                        },
-			                error:  function()
-			                        {
-			                            alert('Error while resquest..');
-			                        }
-			            });
+					if (idCarrera == '' || nrc == '' || nombre == '' || 
+						idPeriodo == '' || area == '' || creditos == '' || 
+						tipo == '' || hrsT == '' || hrsP == '')
+					{
+						mostrarAlerta("Complete los <strong>campos vacíos.</strong>", "alertaFormMaterias");
+					}
+					else
+					{
+					 	$.ajax
+				            ({
+				                type: "POST",
+				                url: $(this).attr("action"),
+				                data: {	'carrera': idCarrera,
+				            			'nrc':nrc,
+				            			'nombre':nombre,
+				            			'periodo':idPeriodo,
+				            			'area':area,
+				            			'creditos':creditos,
+				            			'tipo':tipo,
+				            			'hrsT':hrsT,
+				            			'hrsP':hrsP},
+				                success: function(jso)
+				                        {
+				                            try
+				                            {			                                 
+				                                if (jso.length > 4)
+			                            		{
+			                            			$("#div-ee").html(jso);     
+				                                	document.getElementById("formCrearEE").reset();
+			                            		}
+			                            		else if(jso.length < 4)
+			                            		{
+			                            			mostrarAlerta("El NRC: <strong>"+nrc+"</strong> ya existe", "alertaFormMaterias");
+			                            		};				                           
+				                            }catch(e)
+				                            {
+				                                alert('Exception while resquest...');
+				                            }                       
+				                        },
+				                error:  function()
+				                        {
+				                            alert('Error while resquest..');
+				                        }
+				            });
+					};
 				});
 			</script>
 		</div>
@@ -165,5 +182,5 @@
 			
 		</div>
 		<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
-		
+	</div>
 </div>

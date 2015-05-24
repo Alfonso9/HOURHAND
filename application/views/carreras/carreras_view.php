@@ -30,10 +30,10 @@
 
 				  if (codigo == '' || nombre == '' || creditos == '') 
 				  {
-				  	mostrarAlerta("Complete los campos vacíos", "alertaFormCarreras");
+				  	mostrarAlerta("Complete los <strong>campos vacíos.</strong>", "alertaFormCarreras");
 				  }else
-				  {
-					  $.ajax
+				  {		
+				  		$.ajax
 				            ({
 				                type: "POST",
 				                url: $(this).attr("action"),
@@ -41,9 +41,16 @@
 				                success: function(jso)
 				                        {
 				                            try
-				                            {                                          	                           
-				                                $("#div-carreras").html(jso);
-				                                window.formCrearCarrera();                           
+				                            {            				                            	
+				                            	if (jso.length > 4)
+			                            		{
+			                            			$("#div-carreras").html(jso);
+				                                	window.formCrearCarrera();
+			                            		}
+			                            		else if(jso.length < 4)
+			                            		{
+			                            			mostrarAlerta("El código: <strong>"+codigo+"</strong> ya existe", "alertaFormCarreras");
+			                            		};				                            					                                                           
 				                            }catch(e)
 				                            {
 				                                alert('Exception while resquest...');

@@ -10,7 +10,7 @@
     
     <div class="row">
     	<div class="col-lg-4 grid4 colorbloque">
-    		<a href="EEPrinc()"><h1>MATERIAS</h1></a>
+    		<a onclick="EEPrinc()"><h1>MATERIAS</h1></a>
     	</div>
     	<div class="col-lg-4">
     		<img class="imgmaestros" src="recursos/images/maestros.jpg" class="img-responsive">

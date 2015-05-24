@@ -1,3 +1,4 @@
+<div id="alertaFormMaterias"></div>
 <form class="formularioMateria" id="formCrearEE" action="crud/actualizarEE">
     <div class="form-group" >
         <label for="">Carrera</label><br>
@@ -23,7 +24,7 @@
     </div>
     <div class="form-group" >
         <label for="">NRC</label><br>
-        <input  type="text" id="nrc" value="<?php echo $ee->nrcEE; ?>"
+        <input  type="text" id="nrc" value="<?php echo $ee->nrcEE; ?>" disabled="true"
                 pattern="[0-9]{5}" placeholder="Ejemplo: 12345" title="Deben ser 5 caracteres">
     </div>
     <div class="form-group">
@@ -163,35 +164,43 @@
         }
         var hrsT = $("#hrsT").val();
         var hrsP = $("#hrsP").val();
-
-        $.ajax
-            ({
-                type: "POST",
-                url: $(this).attr("action"),
-                data: { 'carrera': idCarrera,
-                        'nrc':nrc,
-                        'nombre':nombre,
-                        'periodo':idPeriodo,
-                        'area':area,
-                        'creditos':creditos,
-                        'tipo':tipo,
-                        'hrsT':hrsT,
-                        'hrsP':hrsP},
-                success: function(jso)
-                        {
-                            try
-                            {   
-                                $("#div-ee").html(jso);  
-                                formCrearEE();                 
-                            }catch(e)
+        if (idCarrera == '' || nrc == '' || nombre == '' || 
+            idPeriodo == '' || area == '' || creditos == '' || 
+            tipo == '' || hrsT == '' || hrsP == '')
+        {
+            mostrarAlerta("Complete los <strong>campos vacíos.</strong>", "alertaFormMaterias");
+        }
+        else
+        {
+            $.ajax
+                ({
+                    type: "POST",
+                    url: $(this).attr("action"),
+                    data: { 'carrera': idCarrera,
+                            'nrc':nrc,
+                            'nombre':nombre,
+                            'periodo':idPeriodo,
+                            'area':area,
+                            'creditos':creditos,
+                            'tipo':tipo,
+                            'hrsT':hrsT,
+                            'hrsP':hrsP},
+                    success: function(jso)
                             {
-                                alert('Exception while resquest...');
-                            }                       
-                        },
-                error:  function()
-                        {
-                            alert('Error while resquest..');
-                        }
-            });
+                                try
+                                {   
+                                    $("#div-ee").html(jso);  
+                                    formCrearEE();                 
+                                }catch(e)
+                                {
+                                    alert('Exception while resquest...');
+                                }                       
+                            },
+                    error:  function()
+                            {
+                                alert('Error while resquest..');
+                            }
+                });
+        };
     });
 </script>
