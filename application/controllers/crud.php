@@ -20,43 +20,33 @@ class Crud extends CI_Controller {
 	{
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('codigo', 'código', 'required');
-		$this->form_validation->set_rules('nombre', 'nombre', 'required');
-		$this->form_validation->set_rules('creditos', 'créditos', 'required');
 		$data = array(	'codigoCarr' => $this->input->post('codigo'),
 						'nombreCarr' => $this->input->post('nombre'),
 						'creditosCarr' => $this->input->post('creditos') );
 
-		if($this->form_validation->run() == true){
+		$existe = $this->crud_model->validaCarrera($data['codigoCarr']);
+		if ($existe == 0) 
+		{
 			$this->crud_model->createCarrera($data);
 	        $this->data['query'] = $this->crud_model->getNombreCarr();
 			$this->load->view('carreras/seccioncarreras_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreCarr();
-			$this->load->view('carreras/seccioncarreras_view', $this->data);	
-    	}	
+		}
+		elseif ($existe == 1) 
+		{
+			echo json_encode($existe);
+		}
+		
 	}
 
 	function actualizarCarrera()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('codigo', 'código', 'required');
-		$this->form_validation->set_rules('nombre', 'nombre', 'required');
-		$this->form_validation->set_rules('creditos', 'créditos', 'required');
 		$data = array(
 						'nombreCarr' => $this->input->post('nombre'),
 						'creditosCarr' => $this->input->post('creditos') );
 		$id = $this->input->post('codigo');
-
-		if($this->form_validation->run() == true){
-			$this->crud_model->updateCarrera($id, $data);
-	        $this->data['query'] = $this->crud_model->getNombreCarr();
-			$this->load->view('carreras/seccioncarreras_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreCarr();
-			$this->load->view('carreras/seccioncarreras_view', $this->data);	
-    	}
+		$this->crud_model->updateCarrera($id, $data);
+        $this->data['query'] = $this->crud_model->getNombreCarr();
+		$this->load->view('carreras/seccioncarreras_view', $this->data);	
 	}
 
 	function getCarrera()
@@ -94,43 +84,32 @@ class Crud extends CI_Controller {
 
 	function crearAula()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('numero', 'número', 'required');
-		$this->form_validation->set_rules('capacidad', 'capacidad', 'required');
 		$data = array(	'numeroAula' => $this->input->post('numero'),
 						'capacidAula' => $this->input->post('capacidad') );
 
-		if($this->form_validation->run() == true){
+		$existe = $this->crud_model->validaAula($data['numeroAula']);
+		if ($existe == 0) 
+		{	
 			$this->crud_model->createAula($data);
 	        $this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aulas/seccionaulas_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aula/seccionaulas_view', $this->data);	
+			$this->load->view('aulas/seccionaulas_view', $this->data);	
     	}	
+    	elseif ($existe == 1) 
+    	{
+    		echo json_encode($existe);
+    	}
 	}
 
 	function actualizarAula()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('numero', 'número', 'required');
-		$this->form_validation->set_rules('capacidad', 'capacidad', 'required');
 		$data = array(
 						'numeroAula' => $this->input->post('numero'),
 						'capacidAula' => $this->input->post('capacidad') );
 		$id = $this->input->post('numero');
-
-		if($this->form_validation->run() == true){
-			$this->crud_model->updateAula($id, $data);
-	        $this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aulas/seccionaulas_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreAula();
-			$this->load->view('aulas/seccionaulas_view', $this->data);	
-    	}
-	}
+		$this->crud_model->updateAula($id, $data);
+        $this->data['query'] = $this->crud_model->getNombreAula();
+		$this->load->view('aulas/seccionaulas_view', $this->data);
+   	}
 
 	function getAula()
 	{
@@ -167,25 +146,22 @@ class Crud extends CI_Controller {
 
 	function crearMaestro()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('numero', 'número', 'required');
-		$this->form_validation->set_rules('nombre', 'nombre', 'required');
-		$this->form_validation->set_rules('tipo', 'tipo', 'required');
-		$this->form_validation->set_rules('horas', 'horas', 'required');
 		$data = array(	'numMtro' => $this->input->post('numero'),
 						'nombMtro' => $this->input->post('nombre'),
 						'tipoMtro' => $this->input->post('tipo'),
 						'horasMtro' => $this->input->post('horas') );
 
-		if($this->form_validation->run() == true){
+		$existe = $this->crud_model->validaMaestro($data['numMtro']);
+		if ($existe == 0) 
+		{
 			$this->crud_model->createMaestro($data);
 	        $this->data['query'] = $this->crud_model->getNombreMaestro();
 			$this->load->view('maestros/seccionmaestros_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreMaestro();
-			$this->load->view('maestros/seccionmaestros_view', $this->data);	
-    	}	
+		}
+		elseif ($existe == 1) 
+		{
+			echo json_encode($existe);
+		}			
 	}
 
 	function actualizarMaestro()
@@ -351,9 +327,17 @@ class Crud extends CI_Controller {
 						'hrspractEE' => $this->input->post('hrsP'),
 						'creditEE' => $this->input->post('creditos')
 						);
-		$this->crud_model->crearEE($data);
-		$this->data['query'] = $this->crud_model->getNombreEE();
-		$this->load->view('EE/seccionEE_view', $this->data);
+		$existe = $this->crud_model->validaEE($data['nrcEE']);
+		if ($existe == 0) 
+		{
+			$this->crud_model->crearEE($data);
+			$this->data['query'] = $this->crud_model->getNombreEE();
+			$this->load->view('EE/seccionEE_view', $this->data);
+		}
+		elseif ($existe == 1) 
+		{
+			echo json_encode($existe);
+		}
 		
 	}
     function actualizarEE()

@@ -29,7 +29,7 @@
 	  var creditos = $("#creditos").val();
 	  if (nombre == '' || creditos == '') 
 	  {
-	  	mostrarAlerta("Complete los campos vacíos", "alertaFormCarreras");
+	  	mostrarAlerta("Complete los <strong>campos vacíos.</strong>", "alertaFormCarreras");
 	  }
 	  else
 	  {

@@ -21,6 +21,20 @@ class Crud_model extends CI_Model
 	}
 
 	/**
+	 * validaCarrera
+	 *
+	 * @author Alfonso
+	*/
+	public function validaCarrera($codigoCarr)
+	{
+		$existe = $this->db->query("SELECT EXISTS(SELECT * FROM carrera 
+													WHERE codigoCarr = '".$codigoCarr."') AS bool;"
+									);
+		$existe = $existe->row();
+		return $existe->bool;
+	}
+
+	/**
 	 * updateCarrera
 	 *
 	 * @author Alfonso
@@ -125,6 +139,21 @@ class Crud_model extends CI_Model
 		$this->db->where('numeroAula', $id);
 		$query = $this->db->get('horario');
 		return $query->row();
+	}
+
+	/**
+	 * validaAula
+	 *
+	 * @author Alfonso
+	 * Description: Valida que no exista la Llave del aula
+	*/
+	public function validaAula($numeroAula)
+	{
+		$existe = $this->db->query("SELECT EXISTS(SELECT * FROM aula 
+													WHERE numeroAula = '".$numeroAula."') AS bool;"
+									);
+		$existe = $existe->row();
+		return $existe->bool;
 	}
 
 	public function createAula($data)
@@ -358,6 +387,20 @@ class Crud_model extends CI_Model
 	}
 
 	/**
+	 * validaMaestro
+	 *
+	 * @author Alfonso
+	*/
+	public function validaMaestro($numMtro)
+	{
+		$existe = $this->db->query("SELECT EXISTS(SELECT * FROM maestro 
+													WHERE numMtro = '".$numMtro."') AS bool;"
+									);
+		$existe = $existe->row();
+		return $existe->bool;
+	}
+
+	/**
 	 * updateMaestro
 	 *
 	 * @author Alfonso
@@ -412,6 +455,20 @@ class Crud_model extends CI_Model
 		$this->db->where('nrcEE', $id); 
 		$query = $this->db->get('ee');
 		return $query->row();
+	}
+
+	/**
+	 * validaEE
+	 *
+	 * @author Alfonso
+	*/
+	public function validaEE($nrcEE)
+	{
+		$existe = $this->db->query("SELECT EXISTS(SELECT * FROM ee 
+													WHERE nrcEE = '".$nrcEE."') AS bool;"
+									);
+		$existe = $existe->row();
+		return $existe->bool;
 	}
 
 	public function crearEE($data)
