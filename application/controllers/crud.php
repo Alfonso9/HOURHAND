@@ -3,9 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Crud extends CI_Controller {
 
-	public function index()
+	function __construct()
 	{
-         
+		parent::__construct();		
+	}
+
+	public function index()
+	{        
         $this->load->model("crud_model");
 		$this->load->view('pagina_principal/principal_view');
 	}
@@ -166,26 +170,15 @@ class Crud extends CI_Controller {
 
 	function actualizarMaestro()
 	{
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('numero', 'número', 'required');
-		$this->form_validation->set_rules('nombre', 'nombre', 'required');
-		$this->form_validation->set_rules('tipo', 'tipo', 'required');
-		$this->form_validation->set_rules('horas', 'horas', 'required');
 		$data = array(
 						'nombMtro' => $this->input->post('nombre'),
 						'tipoMtro' => $this->input->post('tipo'),
 						'horasMtro' => $this->input->post('horas') );
 		$id = $this->input->post('numero');
 
-		if($this->form_validation->run() == true){
-			$this->crud_model->updateMaestro($id, $data);
-	        $this->data['query'] = $this->crud_model->getNombreMaestro();
-			$this->load->view('maestros/seccionmaestros_view', $this->data);
-    	}elseif ($this->form_validation->run() == false) {
-    		$this->data['query'] = $this->crud_model->getNombreMaestro();
-			$this->load->view('maestros/seccionmaestros_view', $this->data);	
-    	}
+		$this->crud_model->updateMaestro($id, $data);
+        $this->data['query'] = $this->crud_model->getNombreMaestro();
+		$this->load->view('maestros/seccionmaestros_view', $this->data);	
 	}
 
 	function getMaestro()
@@ -383,8 +376,7 @@ class Crud extends CI_Controller {
         $this->data['arreglo'] = array("Básica General", "Iniciación a la Diciplina", "Diciplinaria", "Terminal");
         $this->data['arreglo2'] = array("Obligatoria", "Optativa");
         $this->data['arreglo3'] = array("FEB-JUL", "AGO-ENE");
-		$this->load->view('EE/seccionformEE_view', $this->data);
-               
+		$this->load->view('EE/seccionformEE_view', $this->data);         
 	}
 
 	function eliminarEE()
@@ -417,7 +409,7 @@ class Crud extends CI_Controller {
 	   Descripcion: Realiza una consulta para el reporte
 	   y envia la vista de Info
 	*/
-	function crearReporte()
+	function subTiposReporte()
 	{
 		$tipo = $this->input->post('tipo');
 		$this->data['query'] = $this->crud_model->getTipo($tipo);
@@ -428,10 +420,12 @@ class Crud extends CI_Controller {
 	}
 
 
-	function llenarReporte()
+	function previaReporte(id)
 	{
-		
-		$this->load->view('reportes/pdfReporte_view');
+		$this->load->helper(array('dompdf', 'file'));
+		$html = "No ha seleccionado el reporte";
+		$data = pdf_create($html, '', false);
+     	write_file(base_url().'recursos/pdf/horario', $data);		
 	}
 }
 
