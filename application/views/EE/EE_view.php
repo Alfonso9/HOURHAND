@@ -1,14 +1,9 @@
 <div class="row paginaMateria">
 	<div class="col-md-8 grid8Materia">
 		<h2 class="tituloMateria">MATERIAS</h2>
-<<<<<<< HEAD
 		<?php echo validation_errors(); ?>
 		<div class="col-md-6" id="div-form-ee">
-=======
-		<br><br><br>
-		<div class="col-md-3" id="div-form-ee">
 			<div id="alertaFormMaterias"></div>
->>>>>>> ed09d134ed1ba009a9520386bd4b6724d5feac5c
 			<form class="formularioMateria" id="formCrearEE" action="crud/crearEE">
                 <div class="form-group" >
 					<label for="">Carrera</label><br>
@@ -186,11 +181,7 @@
 		<div class="col-md-3 nombreEE" id="div-ee">
 			
 		</div>
-<<<<<<< HEAD
-	</div>	
-	<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
-=======
-		<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
 	</div>
->>>>>>> ed09d134ed1ba009a9520386bd4b6724d5feac5c
+	<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
+	
 </div>
