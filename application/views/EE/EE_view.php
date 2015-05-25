@@ -1,9 +1,8 @@
 <div class="row paginaMateria">
-	<div class="col-md-12 grid8Materia">
+	<div class="col-md-8 grid8Materia">
 		<h2 class="tituloMateria">MATERIAS</h2>
-		<br><br><br>
 		<?php echo validation_errors(); ?>
-		<div class="col-md-3" id="div-form-ee">
+		<div class="col-md-6" id="div-form-ee">
 			<form class="formularioMateria" id="formCrearEE" action="crud/crearEE">
                 <div class="form-group" >
 					<label for="">Carrera</label><br>
@@ -153,7 +152,7 @@
 		</div>
         <div class="col-md-3 nombreMaterias" id="div-carrerasEE">
             <?php foreach($query3 as $carrera): ?>
-				<article>
+				<article class="colornombreMaterias">
 					<a onclick="getCarreraEE(<?php echo htmlspecialchars(json_encode($carrera->codigoCarr)); ?>)">
 						<?php echo $carrera->nombreCarr; ?>
 					</a>					
@@ -161,9 +160,9 @@
 			<?php endforeach; ?>
 		</div>
 				
-		<div class="col-md-2" id="div-ee">
+		<div class="col-md-3 nombreEE" id="div-ee">
 			
 		</div>
-		<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
-		
+	</div>	
+	<div class="col-md-3 infoMaterias" id="div-infoEE"></div>
 </div>

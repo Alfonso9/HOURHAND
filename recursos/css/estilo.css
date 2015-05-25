@@ -538,20 +538,31 @@ div.alto
     background-color: #21CC6D;  
     color: white; 
     padding-top: 25px;
-    padding-left: 50px;
-    padding-bottom: 180px;
+    padding-left: 15px;
+    padding-bottom: 600px;
     font-size: 16pt;
 }
 
 .colornombreMaterias
 {
     color: white;
-    padding-left: 50px;   
+    padding-left: 15px;
+    padding-bottom: 20px;  
 }
 
 .colornombreMaterias a
 {
     color: white;
+}
+
+.nombreEE
+{
+    background-color: #333;  
+    color: white; 
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-bottom: 600px;
+    font-size: 12pt;
 }
 
 .infoMaterias
