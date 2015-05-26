@@ -12,16 +12,18 @@
 			<h5>Horarios</h5>
 			<select>
 				<option>Seleccione una opción...</option>
-                <option onclick="crearReporte('aulas')">AULAS</option>
-                <option onclick="crearReporte('maestros')">MAESTROS</option>
-                <option onclick="crearReporte('oferta')">OFERTA</option>                                    
-            </select>
+                <option onclick="subTiposReporte('aulas')">AULAS</option>
+                <option onclick="subTiposReporte('maestros')">MAESTROS</option>
+                <option onclick="subTiposReporte('oferta')">OFERTA</option>                                    
+            </select>          
 		</div>
 		<div id="info_report" class="col-md-12">
 			<h1>AREA DE INFO</h1>
 		</div>
 	</div>
 	<div id="area_report" class="col-md-8">
-		<h1>AREA DEL REPORTE</h1>
+		<object data="<?= base_url(); ?>recursos/pdf/temporal.pdf" 
+				type="application/pdf" width="800" height="500">
+		</object>
 	</div>
 </div>

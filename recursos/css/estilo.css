@@ -733,3 +733,20 @@ div.alto
 }
 
 /*Termina estilo de MAESTROS*/
+
+/*****************************REPORTES************************************/
+.reporte
+{   
+    position: relative;
+    min-height: 1px;
+    padding-left: 40px;
+}
+
+.report
+{   
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    
+}
+/*****************************REPORTES************************************/

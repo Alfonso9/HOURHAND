@@ -1189,12 +1189,12 @@ function Reportes()
             });
 }
 
-function crearReporte(tipo)
+function subTiposReporte(tipo)
 {
     $.ajax
             ({
                 type: "POST",
-                url: "crud/crearReporte",
+                url: "crud/subTiposReporte",
                 data: {'tipo':tipo},
                 success: function(jso)
                         {
@@ -1213,20 +1213,27 @@ function crearReporte(tipo)
             });
 }
 
-function llenarReporte(id)
+function previaReporte(id)
 {
     $.ajax
             ({
                 type: "POST",
-                url: "crud/llenarReporte",
+                url: "crud/previaReporte",
                 data: {'id':id},
                 success: function(jso)
                         {
                             try
                             {   
-                                alert(jso);  
-                                $("#area_report").html(jso);                                
-                            }catch(e)
+                                var list = document.getElementById("area_report");
+                                var contenido = list.innerHTML;  
+                                // As long as <ul> has a child node, remove it
+                                while (list.hasChildNodes())
+                                {   
+                                    list.removeChild(list.firstChild);
+                                }
+                                list.innerHTML = contenido;                              
+                            }
+                            catch(e)
                             {
                                 alert('Exception while resquest...');
                             }                       
@@ -1237,5 +1244,4 @@ function llenarReporte(id)
                         }
             });
 }
-
 /**************************************************** Reportes **************************************************************/

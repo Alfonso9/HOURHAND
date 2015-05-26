@@ -544,7 +544,8 @@ class Crud_model extends CI_Model
 				break;
 			
 			case 'oferta':	
-				return null;			
+				$arrayName = array('oferta' => , 'oferta');
+				return $arrayName;			
 				break;
 			
 			default:
