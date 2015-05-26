@@ -420,12 +420,12 @@ class Crud extends CI_Controller {
 	}
 
 
-	function previaReporte(id)
+	function previaReporte()
 	{
-		$this->load->helper(array('dompdf', 'file'));
-		$html = "No ha seleccionado el reporte";
+		$id = $this->input->post('id');
+		$html = "No ha seleccionado el reporte".$id;
 		$data = pdf_create($html, '', false);
-     	write_file(base_url().'recursos/pdf/horario', $data);		
+     	write_file('recursos/pdf/temporal.pdf', $data);		
 	}
 }
 

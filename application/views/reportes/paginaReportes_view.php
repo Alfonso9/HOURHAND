@@ -22,8 +22,8 @@
 		</div>
 	</div>
 	<div id="area_report" class="col-md-8">
-		<h1>AREA DEL REPORTE</h1>
-		<object data="<?= base_url(); ?>recursos/pdf/horario.pdf" type="application/pdf" width="800" height="500">
+		<object data="<?= base_url(); ?>recursos/pdf/temporal.pdf" 
+				type="application/pdf" width="800" height="500">
 		</object>
 	</div>
 </div>
