@@ -1,11 +1,10 @@
-<div class="row">
-	<div class="col-md-8">
-		<h2>MAESTROS</h2>
-		<br><br><br>
+<div class="row paginaMaestro">
+	<div class="col-md-8 grid8Maestro">
+		<h2 class="tituloMaestro">MAESTROS</h2>
 		<script src="<?= base_url(); ?>recursos/js/jquery-1.10.2.js"></script>
 		<div class="col-md-6" id="div-form-maestros">
 			<div id="alertaFormMaestros"></div>
-			<form id="formMaestro" action="crud/crearMaestro">
+			<form class="formularioMaestro" id="formMaestro" action="crud/crearMaestro">
 				<span></span>
 				<div class="form-group" >
 					<label for="">Número</label><br>
@@ -32,7 +31,7 @@
 							pattern="[0-9]{1,2}" 
 							title="Debe contener máximo 2 caracteres.">
 				</div>
-				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+				<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 			</form>
 			<script>
 				$( "#formMaestro" ).submit(function( event ) {				  
@@ -79,9 +78,9 @@
 				});
 			</script>
 		</div>
-		<div class="col-md-6" id="div-maestros">
+		<div class="col-md-6 nombreMaestros" id="div-maestros">
 			<?php foreach($query as $maestro): ?>
-				<article>
+				<article class="colornombreMaestros">
 					<a onclick="getMaestro(<?php echo htmlspecialchars(json_encode($maestro->numMtro)); ?>)">
 						<?php echo $maestro->nombMtro; ?>
 					</a>
@@ -93,7 +92,7 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
-	<div class="col-md-4" id="div-infoMaestro"></div>
+	<div class="col-md-4 infoMaestros" id="div-infoMaestro"></div>
 </div>
 
 

@@ -1,5 +1,5 @@
 <div id="alertaFormMaestros"></div>
-			<form id="formMaestro" action="crud/crearMaestro">
+			<form class="formularioMaestro" id="formMaestro" action="crud/crearMaestro">
 				<span></span>
 				<div class="form-group" >
 					<label for="">Número</label><br>
@@ -26,7 +26,7 @@
 							pattern="[0-9]{1,2}" 
 							title="Debe contener máximo 2 caracteres.">
 				</div>
-				<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+				<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 			</form>
 			<script>
 				$( "#formMaestro" ).submit(function( event ) {				  

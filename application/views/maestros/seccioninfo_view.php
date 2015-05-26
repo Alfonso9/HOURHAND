@@ -1,17 +1,20 @@
-<h2><?php echo $maestro->nombMtro; ?></h2>
-<div class="form-group" >
+<div class="imgMaestro imgnombreMaestro">
+  <h2><?php echo $maestro->nombMtro; ?></h2>
+</div>
+
+<div class="form-group seccioninfoMaestro">
 	<label for="">Número</label><br>
-	<label for=""><?php echo $maestro->numMtro; ?></label>
+	<label class="datosMaestro" for=""><?php echo $maestro->numMtro; ?></label>
 </div>
-<div class="form-group">
+<div class="form-group seccioninfoMaestro">
 	<label for="">Nombre</label><br>
-	<label for=""><?php echo $maestro->nombMtro; ?></label>
+	<label class="datosMaestro" for=""><?php echo $maestro->nombMtro; ?></label>
 </div>
-<div class="form-group">
+<div class="form-group seccioninfoMaestro">
 	<label for="">Tipo</label><br>
-	<label for=""><?php echo $maestro->tipoMtro; ?></label>
+	<label class="datosMaestro" for=""><?php echo $maestro->tipoMtro; ?></label>
 </div>
-<div class="form-group">
+<div class="form-group seccioninfoMaestro">
 	<label for="">Horas</label><br>
-	<label for=""><?php echo $maestro->horasMtro; ?></label>
+	<label class="datosMaestro" for=""><?php echo $maestro->horasMtro; ?></label>
 </div>
