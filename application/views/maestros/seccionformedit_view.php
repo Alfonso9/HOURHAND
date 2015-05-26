@@ -1,5 +1,5 @@
 <div id="alertaFormMaestros"></div>
-<form id="formMaestro" action="crud/actualizarMaestro">
+<form class="formularioCarrera" id="formMaestro" action="crud/actualizarMaestro">
 	<div class="form-group" >
 		<label for="">Número</label><br>
 		<input type="text" id="numero" disabled="true"
@@ -28,7 +28,7 @@
 				title="Debe contener máximo 2 caracteres."
 				value="<?php echo $maestro->horasMtro; ?>">
 	</div>
-	<input type="submit" id="submit" class="btn btn-default" value="Listo"></input>
+	<input type="submit" id="submit" class="btn listo" value="Listo"></input>
 </form>
 
 <script>
