@@ -500,7 +500,7 @@ class Crud_model extends CI_Model
     public function getNombreCarrEE($id)
 	{
 		$this->db->select('nrcEE, nombEE');
-                $this->db->where('codigoCarr', $id);
+        $this->db->where('codigoCarr', $id);
 		$query = $this->db->get('ee');
 		return $query->result();
         }
@@ -551,5 +551,21 @@ class Crud_model extends CI_Model
 			default:
 				break;
 		}
+	}
+
+	public function getEEByAula($id)
+	{
+		$this->db->select('claveHor');
+		$this->db->where('numeroAula', $id);
+		$claveHor = $this->db->get('horario');
+		$claveHor = $claveHor->row();
+
+		$this->db->select('ee.nrcEE, horaAsig, diaAsig, nombEE');
+		$this->db->where('claveHor', $claveHor->claveHor);
+		$this->db->from('asignacion');
+		$this->db->join('ee', 'ee.nrcEE = asignacion.nrcEE');
+		$query = $this->db->get();
+
+		return $query->result();
 	}
 }

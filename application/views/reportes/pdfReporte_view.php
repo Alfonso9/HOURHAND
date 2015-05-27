@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <table style="width:100%">
   <tr>
     <td>Jill</td>
@@ -8,5 +9,8 @@
     <td>Eve</td>
     <td>Jackson</td> 
     <td>94</td>
+<table>
+  <tr>
+    <td>Hola</td>
   </tr>
 </table>

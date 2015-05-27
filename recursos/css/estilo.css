@@ -47,9 +47,39 @@ nav.nav
     margin-top: -100px;
 }
 
-ul.nav-tabs > li
+.paginaHorario
 {
-    ;
+     margin-top: -6.9%;
+}
+
+.grid8Horario
+{
+    margin-top: -20px;
+    margin-left: -4.6px;
+    margin-right: -15px;
+}
+
+.tituloHorario
+{
+    background-color: #23527C;
+    color: white;
+    height: 100px;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30pt;
+    font-weight: lighter;
+    font-style: normal;
+    font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+    line-height: 1.14286;
+    margin-bottom: -0.4px;
+}
+
+.aulasnav
+{
+    background-color: #21CC6D;
+    margin-left: -25px;
+    margin-right: 5px;
+    margin-bottom: 10px;
 }
 
 ul.nav-tabs
@@ -70,13 +100,13 @@ div.canvasHor
 {
     margin-top: 0px;
     margin-left: -20px;
+    padding-bottom: 15px;
 }
 
 .show-grid
 {
     text-align: center;
-    border-radius: 3px;
-    
+    border-radius: 3px;  
 }
 
 div.horario
@@ -649,7 +679,6 @@ div.alto
     font-size: 14pt;
 }
 
-
 .btn.listo
 {
     border-radius: 0px;
@@ -748,5 +777,86 @@ div.alto
     height: 300px;
     overflow-y: scroll;
     
+}
+
+.paginaReporte
+{
+     margin-top: -6.9%;
+}
+
+.grid8Reporte
+{
+    margin-top: -20px;
+    margin-left: -4.6px;
+    margin-right: -15px;
+}
+
+.tituloReporte
+{
+    background-color: #23527C;
+    color: white;
+    height: 100px;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30pt;
+    font-weight: lighter;
+    font-style: normal;
+    font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+    line-height: 1.14286;
+    margin-bottom: -0.4px;
+}
+
+.formularioReporte
+{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    font-size: 14pt;
+}
+
+.imgReporte 
+{
+    background-image: url("../images/reportes/reporte.jpg");
+    background-size: cover;
+    width: 452px;
+    height: 200px;
+    margin-left: -15px;
+    position: relative;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.imgnombreReporte h2 
+{
+  color: white;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  font-family: Open Sans, Helmet, Freesans, Trebuchet MS, sans-serif;
+  font-weight: lighter;
+  font-style: normal;
+  line-height: 1.14286;
+}
+
+.nombreReportes
+{
+    background-color: #21CC6D;  
+    color: white; 
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    font-size: 16pt;
+}
+
+.colornombreReportes
+{
+    color: white;
+    padding-left: 50px;   
+}
+
+.colornombreReportes a
+{
+    color: white;
 }
 /*****************************REPORTES************************************/
