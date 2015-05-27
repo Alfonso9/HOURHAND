@@ -1,5 +1,5 @@
 <div id="alertaFormMaestros"></div>
-<form class="formularioCarrera" id="formMaestro" action="crud/actualizarMaestro">
+<form class="formularioMaestro" id="formMaestro" action="crud/actualizarMaestro">
 	<div class="form-group" >
 		<label for="">Número</label><br>
 		<input type="text" id="numero" disabled="true"

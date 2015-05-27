@@ -1,5 +1,5 @@
 <?php foreach($query as $maestro): ?>
-	<article>
+	<article class="colornombreMaestros">
 		<a onclick="getMaestro(<?php echo htmlspecialchars(json_encode($maestro->numMtro)); ?>)">
 			<?php echo $maestro->nombMtro; ?>
 		</a>

@@ -423,9 +423,37 @@ class Crud extends CI_Controller {
 	function previaReporte()
 	{
 		$id = $this->input->post('id');
-		$html = "No ha seleccionado el reporte".$id;
+		$this->data['ee'] = $this->crud_model->getEEByAula($id);
+
+		$arr = array(); $arrayTmp = array(); $nrc = '';
+		foreach ($this->data['ee'] as $value):
+		    if ($value->nrcEE == $nrc) 
+		    {
+		      	$arrayTmp = array_pop($arr);
+				array_push($arrayTmp, $value->diaAsig);
+				array_push($arrayTmp, $value->horaAsig);
+		      	array_push($arr, $arrayTmp);
+		      $arrayTmp = array();
+		    }
+		    else
+		    {
+		       array_push($arrayTmp, $value->nrcEE);
+		       $nrc = $value->nrcEE;
+		       array_push($arrayTmp, $value->nombEE);
+		       array_push($arrayTmp, $value->diaAsig);
+		       array_push($arrayTmp, $value->horaAsig);
+
+		       array_push($arr, $arrayTmp);
+		    }
+		endforeach;
+		echo json_encode($arr);
+		//$html = "No ha seleccionado el reporte".$id;
+		//$html = $this->load->view('reportes/pdfReporte_view','',true);
+		$this->data['arr'] = $arr;
+		$html = $this->load->view('reportes/reporteAula_view', $this->data, true);
 		$data = pdf_create($html, '', false);
-     	write_file('recursos/pdf/temporal.pdf', $data);		
+     	write_file('recursos/pdf/temporal.pdf', $data);
+     	
 	}
 }
 

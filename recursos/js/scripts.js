@@ -1224,6 +1224,8 @@ function previaReporte(id)
                         {
                             try
                             {   
+
+                                alert(jso);
                                 var list = document.getElementById("area_report");
                                 var contenido = list.innerHTML;  
                                 // As long as <ul> has a child node, remove it
@@ -1231,7 +1233,7 @@ function previaReporte(id)
                                 {   
                                     list.removeChild(list.firstChild);
                                 }
-                                list.innerHTML = contenido;                              
+                                list.innerHTML = contenido;
                             }
                             catch(e)
                             {

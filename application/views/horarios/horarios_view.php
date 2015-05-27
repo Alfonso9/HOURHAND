@@ -1,8 +1,10 @@
-<nav class="nav">
-  <h2>HORARIOS</h2>
+<nav class="row paginaHorario">
+  <div class="col-md-12 grid8Horario">
+  <h2 class="tituloHorario">HORARIOS</h2>
+  </div>
 </nav>
 <div id="alertaHorarios"></div>
-<nav>
+<nav class="aulasnav">
     <ul class="nav nav-tabs aulas">
       <?php foreach($aulas as $aula): ?>
         <li id="<?php echo $aula->numeroAula; ?>" role="presentation">
