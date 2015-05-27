@@ -423,7 +423,7 @@ class Crud extends CI_Controller {
 	function previaReporte()
 	{
 		$id = $this->input->post('id');
-		$html = "No ha seleccionado el reporte".$id;
+		$html = $this->load->view('reportes/pdfReporte_view');
 		$data = pdf_create($html, '', false);
      	write_file('recursos/pdf/temporal.pdf', $data);		
 	}
