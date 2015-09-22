@@ -568,4 +568,25 @@ class Crud_model extends CI_Model
 
 		return $query->result();
 	}
+
+	function getReg()
+	{
+		$this->db->select('convocatoria.nombreConv as Convocatoria, convocatoria.fechaInicio,convocatoria.fechaFin,convocatoria.promedioSolicitado as promedio,universidad.nombre as Universidad, area.nombreAreaFormacion as Area, grado.nombre as Grado, lugar.ciudad as Ciudad, lugar.pais as Pais');    
+		$this->db->from('convocatoria');
+		$this->db->join('universidad', 'convocatoria.Universidad_idUniversidad1 = idUniversidad');
+		$this->db->join('area', 'convocatoria.Area_idArea = area.idArea');
+		$this->db->join('grado', 'convocatoria.Grado_idGrado = grado.idGrado');
+		$this->db->join('lugar', 'convocatoria.Lugar_idLugar = lugar.idLugar');
+		$this->db->order_by("convocatoria.fechaInicio","asc");
+		$this->db->where('grado.nombre', 'Doctorado');
+		//$this->db->where('area.nombreAreaFormacion', 'Económico-Administrativo');
+		//$this->db->where('lugar.pais', 'EUA');
+		//$this->db->where('convocatoria.Universidad_idUniversidad1', 5); 
+		$query = $this->db->get();
+		if($query -> num_rows() > 0){
+			return $query;
+		}else{
+			return false;
+		}
+	}
 }
