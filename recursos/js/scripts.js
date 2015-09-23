@@ -1,5 +1,5 @@
 window.onload = function(e)
-                {
+                {                    
                     $("#wrapper").toggleClass("toggled");
                  }
 
@@ -464,7 +464,7 @@ function verHorario(id)
    secciòn de horario al controlador crud.php
 */
 function verEE(id)
-{
+{   
     $.ajax
             ({
                 type: "POST",

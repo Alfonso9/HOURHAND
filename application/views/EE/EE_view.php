@@ -25,8 +25,9 @@
 				<div class="form-group">
 					<label for="">Nombre</label><br>
                                         <input type="text" id="nombre" name="nombre" 
-					pattern="[A-ZÑÁÉÍÓÚ]{1}[a-zñáéíóú\s]+" placeholder="Ejemplo: Logica" title="Primera letra mayúscula. Máximo 50 caracteres">
+					 placeholder="Ejemplo: Logica" title="Primera letra mayúscula. Máximo 50 caracteres">
 				</div>
+				<!-- pattern="[A-ZÑÁÉÍÓÚ]{1}[a-zñáéíóú\s]+" -->
                 <div class="form-group" >
 					<label for="">Periodo</label><br>
                     <select id="periodoEE" name="periodoEE" placeholder="Periodo">

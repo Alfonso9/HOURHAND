@@ -5,8 +5,9 @@
     <script src="<?= base_url(); ?>recursos/js/jquery-latest.min.js"></script>
     <script src="<?= base_url(); ?>recursos/js/jquery.js"></script>
     <script src="<?= base_url(); ?>recursos/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+     <script src="<?= base_url(); ?>recursos/js/jquery.js"></script>
     <script src="<?= base_url(); ?>recursos/js/scripts.js"></script>
-    <script src="<?= base_url(); ?>recursos/js/jquery.js"></script>
+   
     <!--Fin JavaScript-->
     
     <footer>
