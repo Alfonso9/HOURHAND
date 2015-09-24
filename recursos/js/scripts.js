@@ -615,10 +615,47 @@ function EEdispon(hrs, e, nrc)
     var list = document.getElementById("EEdisp");
 
     // As long as <ul> has a child node, remove it
-    while (list.hasChildNodes()) {   
+    while (list.hasChildNodes()) 
+    {   
         list.removeChild(list.firstChild);
     }
 
+    //Get DIV from iMaestros
+    var list2 = document.getElementById("iMaestro");
+
+    while (list2.hasChildNodes()) 
+    {   
+        list2.removeChild(list2.firstChild);
+    }
+    $.ajax({
+        type: "POST",
+        url: "crud/getInfoAsigEE",
+        data: {'nrc': nrc},
+        success: function(jso)
+                {
+                    var obj = JSON.parse(jso);
+                    if (obj[0] != undefined) 
+                    {                    
+                        var h4a = document.createElement("h4");                     
+                        h4a.innerHTML = "Maestro:";
+                        var pa = document.createElement("p");
+                        var span1 = document.createElement("span");
+                        span1.innerHTML = obj[0].nombMtro;
+                        pa.appendChild(span1);
+                        document.getElementById("iMaestro").appendChild(h4a);
+                        document.getElementById("iMaestro").appendChild(pa);
+
+                        var h4b = document.createElement("h4");
+                        h4b.innerHTML = "Matricula:";
+                        var pb = document.createElement("p");  
+                        var span2 = document.createElement("span");
+                        span2.innerHTML = obj[0].numMtro;
+                        pb.appendChild(span2);
+                        document.getElementById("iMaestro").appendChild(h4b);
+                        document.getElementById("iMaestro").appendChild(pb);                     
+                    }
+                }
+    });
     $.ajax({
         type: "POST",
         url: "crud/getposicAsigEE",
@@ -627,7 +664,7 @@ function EEdispon(hrs, e, nrc)
                 {
                     try
                     {     
-                        var obj = JSON.parse(jso);
+                        var obj = JSON.parse(jso);                        
                         var b = false;
                         for (var i = 1; i <= hrs; i++) 
                         {
@@ -637,13 +674,13 @@ function EEdispon(hrs, e, nrc)
                                 {
                                     b = true;
                                     break;
-                                };
-                            };
+                                }
+                            }
                             if(b == true)
                             {
                                 b = false;
                                 continue;
-                            };
+                            }
                             var div = document.createElement("div");
                             var input = document.createElement("input");
                             var p = document.createElement("p");

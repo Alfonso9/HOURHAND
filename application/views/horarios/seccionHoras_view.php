@@ -18,8 +18,8 @@
 		<div 	id="viernes:<?php echo $entrada+$i; ?>:<?php echo $numeroaula; ?>" 
 				class="col-md-1 color1 alto EE" 
 				ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		<div 	id="sabado:<?php echo $entrada+$i; ?>:<?php echo $numeroaula; ?>" 
+		<!--div 	id="sabado:<?php echo $entrada+$i; ?>:<?php echo $numeroaula; ?>" 
 				class="col-md-1 color1 alto EE" 
-				ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				ondrop="drop(event)" ondragover="allowDrop(event)"></div-->
 	</div>	
 <?php } ?>

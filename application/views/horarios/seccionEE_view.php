@@ -8,7 +8,7 @@
 		    <span value="<?php echo $e->nombEE; ?>">
 		    	<?php echo $e->nombEE; ?>
 		    </span>
-		<br>
+		<br>		
 	    <span class="info">
 	    	T: <?php echo $e->hrsteoriaEE; ?> 
 	    	P: <?php echo $e->hrspractEE; ?> 

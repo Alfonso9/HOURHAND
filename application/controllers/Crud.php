@@ -284,6 +284,16 @@ class Crud extends CI_Controller {
 		echo json_encode($this->crud_model->getposicAsigEE($id));
 	}
 
+	/* Nombre: getInfoAsigEE
+	   Autor: Alfonso
+	   Descripcion: Devuleve información de la EE
+	*/
+	function getInfoAsigEE()
+	{	
+		$id = $this->input->post('nrc');
+		echo json_encode($this->crud_model->getInfoAsigEE($id));
+	}
+
 	/* Nombre: borrarMovimiento
 	   Autor: Alfonso
 	   Descripcion: Recibe los datos del elemento a borrar
